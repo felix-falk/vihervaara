@@ -1,12 +1,8 @@
 ## REX-motif finding script
 # This script returns a BED file of each REX motif found in a given FASTA file. 
-# It takes about 5-15 minutes to run, depending on the size of the FASTA file. 
 
 # Download hg19 chromosome FASTA files from this link: 
 # https://hgdownload.soe.ucsc.edu/goldenPath/hg19/chromosomes/
-
-# Download hs1 chromosome FASTA file from this link: 
-# https://hgdownload.soe.ucsc.edu/goldenPath/hs1/bigZips/
 
 # Run in terminal as: 
 # Rscript ~/Documents/GitHub/vihervaara/REX_finder.R ~/Documents/Vihervaara/hg19/hg19_chr/chr1.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr2.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr3.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr4.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr5.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr6.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr7.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr8.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr9.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr10.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr11.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr12.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr13.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr14.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr15.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr16.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr17.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr18.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr19.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr20.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr21.fa ~/Documents/Vihervaara/hg19/hg19_chr/chr22.fa ~/Documents/Vihervaara/hg19/hg19_chr/chrX.fa ~/Documents/Vihervaara/hg19/hg19_chr/chrY.fa ~/Documents/Vihervaara/hg19/hg19_rex_bed/rex_new.bed

@@ -1,0 +1,412 @@
+# Define the directories
+base_dir="~/Documents/Vihervaara/hg19"
+chiapet_dir="$base_dir/chiapet"
+enhancers_dir="$base_dir/enhancers"
+promoters_file="$base_dir/refSeqPromoters.bed"
+
+## Step 1
+# Return one left-hand and one right-hand chiapet BED file from the original chiapet BED file
+
+# Run the chia_pet_script.R script on the original ChIA-PET file
+Rscript ~/Documents/GitHub/vihervaara/chia_pet_script.R \
+~/Documents/Vihervaara/hg19/chiapet/ChIAPET_dTREd_to_Pol2blocks_allConn_iu_indivReducedToUniqueConnections_TCDinRed_d2dBlac_d2nTinBrOrange_nTnTgreenish.sorted.bed \
+~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed
+
+## Step 2
+# bedtools intersect ChIA-PET and PRO-seq promoters
+
+# Step 2.1: overlapping promoters or enhancers
+
+# Find Left-hand ChIA-PET overlapping with PROMOTERS: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/refSeqPromoters.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed > \
+~/Documents/Vihervaara/hg19/chiapet/promoter_ChIAPETLeft_overlap.bed
+
+# Find Right-hand ChIA-PET overlapping with PROMOTERS:
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/refSeqPromoters.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed > \
+~/Documents/Vihervaara/hg19/chiapet/promoter_ChIAPETRight_overlap.bed
+
+# Find Left-hand ChIA-PET overlapping with HEAT SHOCK PRO SEQ ENHANCERS: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/PRO_HS_enhancers.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_ChIAPETLeft_overlap.bed
+
+# Find Right-hand ChIA-PET overlapping with HEAT SHOCK PRO SEQ ENHANCERS: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/PRO_HS_enhancers.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_ChIAPETRight_overlap.bed
+
+# Find Left-hand ChIA-PET overlapping with ENHANCER CLUSTERS: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/eClusters_filtered.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancercluster_ChIAPETLeft_overlap.bed
+
+# Find Right-hand ChIA-PET overlapping with ENHANCER CLUSTERS: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/eClusters_filtered.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancercluster_ChIAPETRight_overlap.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 0 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He0_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_0min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 0 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He0_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_0min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 15 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He15_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_15min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 15 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He15_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_15min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 30 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He30_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_30min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 30 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He30_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_30min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 60 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He60_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_60min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 60 minutes: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He60_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_60min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 24h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He24h_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_24h.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 24h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He24h_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_24h.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 48h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He48h_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_48h.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN PRO SEQ ENHANCERS 48h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/enhancers/He48h_eRPK.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_48h.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 0 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_0min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_0min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 0 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_0min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_0min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 15 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_15min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_15min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 15 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_15min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_15min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 30 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_30min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_30min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 30 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_30min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_30min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 60 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_60min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_60min.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 60 min: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_60min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_60min.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 24h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_1440min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_24h.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 24h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_1440min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_24h.bed
+
+# Find Left-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 48h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_2880min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_48h.bed
+
+# Find Right-hand ChIA-PET overlapping with HEMIN CAGE SEQ ENHANCERS 48h: 
+bedtools intersect -wa -wb -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_2880min.bed \
+-b ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed \
+>  ~/Documents/Vihervaara/hg19/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_48h.bed
+
+### Step 2.2: consolidate confirmed promoter-enhancer overlaps
+
+# Filter out the left-hand PROMOTERS by right-hand HEAT SHOCK PRO SEQ ENHANCERS: 
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+~/Documents/Vihervaara/hg19/chiapet/enhancer_ChIAPETRight_overlap.bed \
+~/Documents/Vihervaara/hg19/chiapet/promoter_ChIAPETLeft_overlap.bed \
+~/Documents/Vihervaara/hg19/chiapet/lPro_rEn_ChIAPET.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEAT SHOCK PRO SEQ ENHANCERS: 
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+~/Documents/Vihervaara/hg19/chiapet/enhancer_ChIAPETLeft_overlap.bed \
+~/Documents/Vihervaara/hg19/chiapet/promoter_ChIAPETRight_overlap.bed \
+~/Documents/Vihervaara/hg19/chiapet/lEn_rPro_ChIAPET.bed
+
+# Filter out the left-hand PROMOTERS by right-hand ENHANCER CLUSTERS: 
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+~/Documents/Vihervaara/hg19/chiapet/enhancercluster_ChIAPETRight_overlap.bed \
+~/Documents/Vihervaara/hg19/chiapet/promoter_ChIAPETLeft_overlap.bed \
+~/Documents/Vihervaara/hg19/chiapet/lPro_rEnCluster_ChIAPET.bed
+
+# Filter out the right-hand PROMOTERS by left-hand ENHANCER CLUSTERS: 
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancercluster_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEnCluster_rPro_ChIAPET.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN PRO SEQ ENHANCERS 0 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_0min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_0min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN PRO SEQ ENHANCERS 0 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_0min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_0min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN PRO SEQ ENHANCERS 15 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_15min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_15min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN PRO SEQ ENHANCERS 15 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_15min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_15min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN PRO SEQ ENHANCERS 30 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_30min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_30min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN PRO SEQ ENHANCERS 30 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_30min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_30min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN PRO SEQ ENHANCERS 60 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_60min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_60min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN PRO SEQ ENHANCERS 60 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_60min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_60min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN PRO SEQ ENHANCERS 24 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_24h.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_24h.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN PRO SEQ ENHANCERS 24 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_24h.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_24h.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN PRO SEQ ENHANCERS 48 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETRight_overlap_48h.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_48h.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN PRO SEQ ENHANCERS 48 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_pro_ChIAPETLeft_overlap_48h.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_48h.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN CAGE SEQ ENHANCERS 0 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_0min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_0min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN CAGE SEQ ENHANCERS 0 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_0min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_0min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN CAGE SEQ ENHANCERS 15 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_15min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_15min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN CAGE SEQ ENHANCERS 15 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_15min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_15min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN CAGE SEQ ENHANCERS 30 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_30min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_30min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN CAGE SEQ ENHANCERS 30 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_30min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_30min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN CAGE SEQ ENHANCERS 60 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_60min.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_60min.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN CAGE SEQ ENHANCERS 60 minutes:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_60min.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_60min.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN CAGE SEQ ENHANCERS 24 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_24h.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_24h.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN CAGE SEQ ENHANCERS 24 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_24h.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_24h.bed
+
+# Filter out the left-hand PROMOTERS by right-hand HEMIN CAGE SEQ ENHANCERS 48 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETRight_overlap_48h.bed \
+$base_dir/chiapet/promoter_ChIAPETLeft_overlap.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_48h.bed
+
+# Filter out the right-hand PROMOTERS by left-hand HEMIN CAGE SEQ ENHANCERS 48 hours:
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/intersectBED.R \
+$base_dir/chiapet/enhancer_hemin_cage_ChIAPETLeft_overlap_48h.bed \
+$base_dir/chiapet/promoter_ChIAPETRight_overlap.bed \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_48h.bed
+
+## Step 3
+# Return a BED file of ONLY enhancer-promoter connections
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET.bed \
+$base_dir/chiapet/PRO_HS_connections.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEnCluster_rPro_ChIAPET.bed \
+$base_dir/chiapet/lPro_rEnCluster_ChIAPET.bed \
+$base_dir/chiapet/eClusters_connections.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_0min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_0min.bed \
+$base_dir/chiapet/PRO_hemin_connections_0min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_15min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_15min.bed \
+$base_dir/chiapet/PRO_hemin_connections_15min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_30min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_30min.bed \
+$base_dir/chiapet/PRO_hemin_connections_30min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_60min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_60min.bed \
+$base_dir/chiapet/PRO_hemin_connections_60min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_24h.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_24h.bed \
+$base_dir/chiapet/PRO_hemin_connections_24h.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_pro_48h.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_pro_48h.bed \
+$base_dir/chiapet/PRO_hemin_connections_48h.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_0min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_0min.bed \
+$base_dir/chiapet/CAGE_hemin_connections_0min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_15min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_15min.bed \
+$base_dir/chiapet/CAGE_hemin_connections_15min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_30min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_30min.bed \
+$base_dir/chiapet/CAGE_hemin_connections_30min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_60min.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_60min.bed \
+$base_dir/chiapet/CAGE_hemin_connections_60min.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_24h.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_24h.bed \
+$base_dir/chiapet/CAGE_hemin_connections_24h.bed
+
+Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator.R \
+$base_dir/chiapet/lEn_rPro_ChIAPET_hemin_cage_48h.bed \
+$base_dir/chiapet/lPro_rEn_ChIAPET_hemin_cage_48h.bed \
+$base_dir/chiapet/CAGE_hemin_connections_48h.bed
