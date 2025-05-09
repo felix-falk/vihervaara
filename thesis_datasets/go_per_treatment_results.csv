@@ -1,0 +1,237 @@
+;GO biological process complete;;;expected;over/under;fold Enrichment;Raw p-value;FDR;Hemin;Seq
+Cageseq_0min;protein localization to chromatin (GO:0071168);18;13;3.39;+;3.84;1.17E-06;1.41E-02;0 minutes;cageseq
+Cageseq_0min;chromatin organization (GO:0006325);565;148;106.34;+;1.39;6.41E-06;3.86E-02;0 minutes;cageseq
+Cageseq_0min;negative regulation of DNA-templated transcription (GO:0045892);546;143;102.77;+;1.39;1.02E-05;4.08E-02;0 minutes;cageseq
+Cageseq_0min;negative regulation of RNA biosynthetic process (GO:1902679);547;143;102.96;+;1.39;1.05E-05;3.16E-02;0 minutes;cageseq
+Cageseq_15min;protein localization to chromatin (GO:0071168);18;14;4.23;+;3.31;1.74E-06;2.09E-02;15 minutes;cageseq
+Cageseq_15min;nucleosome assembly (GO:0006334);45;25;10.58;+;2.36;3.42E-06;2.06E-02;15 minutes;cageseq
+Cageseq_15min;nucleosome organization (GO:0034728);56;29;13.17;+;2.20;4.15E-06;1.25E-02;15 minutes;cageseq
+Cageseq_15min;response to abiotic stimulus (GO:0009628);446;145;104.88;+;1.38;7.95E-06;1.91E-02;15 minutes;cageseq
+Cageseq_15min;regulation of primary metabolic process (GO:0080090);2205;595;518.54;+;1.15;3.84E-06;1.54E-02;15 minutes;cageseq
+Cageseq_15min;negative regulation of cellular process (GO:0048523);2016;543;474.09;+;1.15;2.01E-05;2.42E-02;15 minutes;cageseq
+Cageseq_15min;negative regulation of biological process (GO:0048519);2089;562;491.26;+;1.14;1.39E-05;2.10E-02;15 minutes;cageseq
+Cageseq_15min;positive regulation of cellular process (GO:0048522);2356;626;554.05;+;1.13;1.69E-05;2.26E-02;15 minutes;cageseq
+Cageseq_15min;regulation of macromolecule metabolic process (GO:0060255);2405;639;565.57;+;1.13;1.23E-05;2.12E-02;15 minutes;cageseq
+Cageseq_15min;positive regulation of biological process (GO:0048518);2454;651;577.09;+;1.13;1.18E-05;2.36E-02;15 minutes;cageseq
+Cageseq_30min;negative regulation of immune system process (GO:0002683);187;71;47.23;+;1.50;1.09E-04;3.85E-02;30 minutes;cageseq
+Cageseq_30min;negative regulation of transcription by RNA polymerase II (GO:0000122);414;145;104.57;+;1.39;4.86E-06;3.44E-03;30 minutes;cageseq
+Cageseq_30min;negative regulation of DNA-templated transcription (GO:0045892);546;189;137.91;+;1.37;4.29E-07;6.45E-04;30 minutes;cageseq
+Cageseq_30min;negative regulation of RNA biosynthetic process (GO:1902679);547;189;138.16;+;1.37;4.42E-07;5.91E-04;30 minutes;cageseq
+Cageseq_30min;negative regulation of RNA metabolic process (GO:0051253);594;203;150.03;+;1.35;4.14E-07;7.12E-04;30 minutes;cageseq
+Cageseq_30min;chromatin organization (GO:0006325);565;189;142.71;+;1.32;5.06E-06;3.38E-03;30 minutes;cageseq
+Cageseq_30min;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;220;167.21;+;1.32;1.45E-06;1.16E-03;30 minutes;cageseq
+Cageseq_30min;response to abiotic stimulus (GO:0009628);446;148;112.65;+;1.31;1.20E-04;4.13E-02;30 minutes;cageseq
+Cageseq_30min;chromatin remodeling (GO:0006338);495;162;125.03;+;1.30;1.06E-04;3.87E-02;30 minutes;cageseq
+Cageseq_30min;positive regulation of transcription by RNA polymerase II (GO:0045944);542;177;136.90;+;1.29;5.61E-05;2.18E-02;30 minutes;cageseq
+Cageseq_30min;positive regulation of RNA biosynthetic process (GO:1902680);773;243;195.25;+;1.24;4.18E-05;1.73E-02;30 minutes;cageseq
+Cageseq_30min;positive regulation of DNA-templated transcription (GO:0045893);773;243;195.25;+;1.24;4.18E-05;1.68E-02;30 minutes;cageseq
+Cageseq_30min;negative regulation of metabolic process (GO:0009892);1185;370;299.31;+;1.24;3.61E-07;7.25E-04;30 minutes;cageseq
+Cageseq_30min;positive regulation of RNA metabolic process (GO:0051254);840;262;212.17;+;1.23;3.75E-05;1.74E-02;30 minutes;cageseq
+Cageseq_30min;negative regulation of macromolecule biosynthetic process (GO:0010558);927;289;234.14;+;1.23;1.30E-05;6.79E-03;30 minutes;cageseq
+Cageseq_30min;negative regulation of macromolecule metabolic process (GO:0010605);1091;340;275.57;+;1.23;1.58E-06;1.19E-03;30 minutes;cageseq
+Cageseq_30min;regulation of transcription by RNA polymerase II (GO:0006357);1117;348;282.14;+;1.23;1.13E-06;9.68E-04;30 minutes;cageseq
+Cageseq_30min;positive regulation of nucleobase-containing compound metabolic process (GO:0045935);943;292;238.19;+;1.23;2.16E-05;1.08E-02;30 minutes;cageseq
+Cageseq_30min;negative regulation of biosynthetic process (GO:0009890);958;294;241.97;+;1.22;4.17E-05;1.79E-02;30 minutes;cageseq
+Cageseq_30min;regulation of RNA metabolic process (GO:0051252);1558;469;393.52;+;1.19;7.26E-07;7.95E-04;30 minutes;cageseq
+Cageseq_30min;regulation of DNA-templated transcription (GO:0006355);1431;429;361.45;+;1.19;5.11E-06;3.24E-03;30 minutes;cageseq
+Cageseq_30min;regulation of RNA biosynthetic process (GO:2001141);1432;429;361.70;+;1.19;6.02E-06;3.45E-03;30 minutes;cageseq
+Cageseq_30min;positive regulation of macromolecule metabolic process (GO:0010604);1392;417;351.60;+;1.19;7.93E-06;4.34E-03;30 minutes;cageseq
+Cageseq_30min;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;506;428.89;+;1.18;9.17E-07;8.49E-04;30 minutes;cageseq
+Cageseq_30min;negative regulation of cellular process (GO:0048523);2016;595;509.21;+;1.17;2.30E-07;5.53E-04;30 minutes;cageseq
+Cageseq_30min;negative regulation of biological process (GO:0048519);2089;616;527.65;+;1.17;1.15E-07;3.45E-04;30 minutes;cageseq
+Cageseq_30min;regulation of primary metabolic process (GO:0080090);2205;649;556.95;+;1.17;5.45E-08;2.18E-04;30 minutes;cageseq
+Cageseq_30min;regulation of gene expression (GO:0010468);2068;605;522.34;+;1.16;7.29E-07;7.32E-04;30 minutes;cageseq
+Cageseq_30min;regulation of macromolecule metabolic process (GO:0060255);2405;703;607.46;+;1.16;3.24E-08;3.90E-04;30 minutes;cageseq
+Cageseq_30min;positive regulation of metabolic process (GO:0009893);1519;444;383.67;+;1.16;6.55E-05;2.46E-02;30 minutes;cageseq
+Cageseq_30min;regulation of macromolecule biosynthetic process (GO:0010556);2113;617;533.71;+;1.16;6.26E-07;7.54E-04;30 minutes;cageseq
+Cageseq_30min;regulation of metabolic process (GO:0019222);2610;755;659.24;+;1.15;4.68E-08;2.82E-04;30 minutes;cageseq
+Cageseq_30min;regulation of biosynthetic process (GO:0009889);2183;628;551.39;+;1.14;5.38E-06;3.24E-03;30 minutes;cageseq
+Cageseq_30min;positive regulation of cellular process (GO:0048522);2356;666;595.09;+;1.12;3.47E-05;1.67E-02;30 minutes;cageseq
+Cageseq_30min;positive regulation of biological process (GO:0048518);2454;691;619.84;+;1.11;4.07E-05;1.81E-02;30 minutes;cageseq
+Cageseq_60min;protein localization to chromatin (GO:0071168);18;15;4.54;+;3.30;3.73E-07;1.12E-03;60 minutes;cageseq
+Cageseq_60min;nucleosome assembly (GO:0006334);45;26;11.35;+;2.29;5.26E-06;3.17E-03;60 minutes;cageseq
+Cageseq_60min;nucleosome organization (GO:0034728);56;30;14.13;+;2.12;6.53E-06;3.57E-03;60 minutes;cageseq
+Cageseq_60min;cellular response to abiotic stimulus (GO:0071214);147;58;37.09;+;1.56;1.56E-04;4.93E-02;60 minutes;cageseq
+Cageseq_60min;cellular response to environmental stimulus (GO:0104004);147;58;37.09;+;1.56;1.56E-04;4.80E-02;60 minutes;cageseq
+Cageseq_60min;hemopoiesis (GO:0030097);320;112;80.73;+;1.39;7.07E-05;2.58E-02;60 minutes;cageseq
+Cageseq_60min;negative regulation of transcription by RNA polymerase II (GO:0000122);414;144;104.45;+;1.38;8.30E-06;4.16E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of DNA-templated transcription (GO:0045892);546;185;137.75;+;1.34;2.69E-06;2.16E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of RNA biosynthetic process (GO:1902679);547;185;138.00;+;1.34;2.77E-06;2.09E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of RNA metabolic process (GO:0051253);594;199;149.86;+;1.33;2.43E-06;2.09E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;218;167.01;+;1.31;2.93E-06;2.07E-03;60 minutes;cageseq
+Cageseq_60min;chromatin organization (GO:0006325);565;185;142.54;+;1.30;3.18E-05;1.28E-02;60 minutes;cageseq
+Cageseq_60min;positive regulation of transcription by RNA polymerase II (GO:0045944);542;175;136.74;+;1.28;1.31E-04;4.26E-02;60 minutes;cageseq
+Cageseq_60min;regulation of transcription by RNA polymerase II (GO:0006357);1117;349;281.81;+;1.24;7.53E-07;1.30E-03;60 minutes;cageseq
+Cageseq_60min;positive regulation of RNA biosynthetic process (GO:1902680);773;240;195.02;+;1.23;1.06E-04;3.64E-02;60 minutes;cageseq
+Cageseq_60min;positive regulation of DNA-templated transcription (GO:0045893);773;240;195.02;+;1.23;1.06E-04;3.54E-02;60 minutes;cageseq
+Cageseq_60min;positive regulation of nucleobase-containing compound metabolic process (GO:0045935);943;290;237.91;+;1.22;3.67E-05;1.43E-02;60 minutes;cageseq
+Cageseq_60min;negative regulation of macromolecule biosynthetic process (GO:0010558);927;285;233.87;+;1.22;4.59E-05;1.73E-02;60 minutes;cageseq
+Cageseq_60min;negative regulation of metabolic process (GO:0009892);1185;364;298.96;+;1.22;2.39E-06;2.22E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of macromolecule metabolic process (GO:0010605);1091;335;275.25;+;1.22;8.25E-06;4.32E-03;60 minutes;cageseq
+Cageseq_60min;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;338;280.54;+;1.20;1.95E-05;9.01E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of biosynthetic process (GO:0009890);958;291;241.69;+;1.20;9.75E-05;3.45E-02;60 minutes;cageseq
+Cageseq_60min;positive regulation of biosynthetic process (GO:0009891);1161;351;292.91;+;1.20;2.27E-05;1.01E-02;60 minutes;cageseq
+Cageseq_60min;positive regulation of macromolecule metabolic process (GO:0010604);1392;419;351.19;+;1.19;4.03E-06;2.55E-03;60 minutes;cageseq
+Cageseq_60min;positive regulation of metabolic process (GO:0009893);1519;452;383.23;+;1.18;5.83E-06;3.34E-03;60 minutes;cageseq
+Cageseq_60min;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;503;428.39;+;1.17;2.05E-06;2.05E-03;60 minutes;cageseq
+Cageseq_60min;regulation of primary metabolic process (GO:0080090);2205;652;556.30;+;1.17;1.62E-08;1.95E-04;60 minutes;cageseq
+Cageseq_60min;regulation of DNA-templated transcription (GO:0006355);1431;423;361.02;+;1.17;2.86E-05;1.23E-02;60 minutes;cageseq
+Cageseq_60min;regulation of RNA biosynthetic process (GO:2001141);1432;423;361.28;+;1.17;2.90E-05;1.20E-02;60 minutes;cageseq
+Cageseq_60min;regulation of RNA metabolic process (GO:0051252);1558;460;393.06;+;1.17;1.13E-05;5.44E-03;60 minutes;cageseq
+Cageseq_60min;regulation of macromolecule biosynthetic process (GO:0010556);2113;618;533.08;+;1.16;3.85E-07;9.27E-04;60 minutes;cageseq
+Cageseq_60min;regulation of macromolecule metabolic process (GO:0060255);2405;702;606.75;+;1.16;3.23E-08;1.94E-04;60 minutes;cageseq
+Cageseq_60min;negative regulation of cellular process (GO:0048523);2016;588;508.61;+;1.16;1.53E-06;1.85E-03;60 minutes;cageseq
+Cageseq_60min;regulation of gene expression (GO:0010468);2068;602;521.73;+;1.15;1.35E-06;1.81E-03;60 minutes;cageseq
+Cageseq_60min;negative regulation of biological process (GO:0048519);2089;607;527.03;+;1.15;1.67E-06;1.83E-03;60 minutes;cageseq
+Cageseq_60min;positive regulation of cellular process (GO:0048522);2356;681;594.39;+;1.15;4.33E-07;8.69E-04;60 minutes;cageseq
+Cageseq_60min;regulation of metabolic process (GO:0019222);2610;754;658.47;+;1.15;4.66E-08;1.87E-04;60 minutes;cageseq
+Cageseq_60min;regulation of biosynthetic process (GO:0009889);2183;629;550.75;+;1.14;3.45E-06;2.31E-03;60 minutes;cageseq
+Cageseq_60min;positive regulation of biological process (GO:0048518);2454;703;619.12;+;1.14;1.34E-06;2.01E-03;60 minutes;cageseq
+Cageseq_24h;nucleosome assembly (GO:0006334);45;25;9.88;+;2.53;8.84E-07;1.52E-03;24 hours;cageseq
+Cageseq_24h;nucleosome organization (GO:0034728);56;29;12.29;+;2.36;8.65E-07;1.74E-03;24 hours;cageseq
+Cageseq_24h;cellular response to abiotic stimulus (GO:0071214);147;57;32.27;+;1.77;4.04E-06;4.86E-03;24 hours;cageseq
+Cageseq_24h;cellular response to environmental stimulus (GO:0104004);147;57;32.27;+;1.77;4.04E-06;4.42E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of RNA metabolic process (GO:0051253);594;184;130.39;+;1.41;8.00E-08;9.62E-04;24 hours;cageseq
+Cageseq_24h;negative regulation of transcription by RNA polymerase II (GO:0000122);414;128;90.88;+;1.41;1.24E-05;9.33E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of DNA-templated transcription (GO:0045892);546;168;119.86;+;1.40;6.23E-07;1.88E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of RNA biosynthetic process (GO:1902679);547;168;120.08;+;1.40;6.45E-07;1.55E-03;24 hours;cageseq
+Cageseq_24h;chromatin organization (GO:0006325);565;169;124.03;+;1.36;3.65E-06;4.88E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;198;145.32;+;1.36;5.39E-07;2.16E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of macromolecule metabolic process (GO:0010605);1091;304;239.49;+;1.27;4.66E-07;2.81E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of macromolecule biosynthetic process (GO:0010558);927;258;203.49;+;1.27;5.73E-06;5.75E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of metabolic process (GO:0009892);1185;325;260.13;+;1.25;8.95E-07;1.35E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of biosynthetic process (GO:0009890);958;262;210.30;+;1.25;2.04E-05;1.44E-02;24 hours;cageseq
+Cageseq_24h;regulation of transcription by RNA polymerase II (GO:0006357);1117;303;245.20;+;1.24;7.60E-06;7.04E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of cellular process (GO:0048523);2016;512;442.54;+;1.16;1.07E-05;8.62E-03;24 hours;cageseq
+Cageseq_24h;negative regulation of biological process (GO:0048519);2089;529;458.57;+;1.15;9.82E-06;8.44E-03;24 hours;cageseq
+Cageseq_24h;regulation of primary metabolic process (GO:0080090);2205;548;484.03;+;1.13;6.92E-05;4.63E-02;24 hours;cageseq
+Cageseq_48h;cellular response to abiotic stimulus (GO:0071214);147;43;21.44;+;2.01;4.29E-06;5.16E-02;48 hours;cageseq
+Cageseq_48h;cellular response to environmental stimulus (GO:0104004);147;43;21.44;+;2.01;4.29E-06;2.58E-02;48 hours;cageseq
+Cageseq_48h;negative regulation of DNA-templated transcription (GO:0045892);546;115;79.64;+;1.44;2.07E-05;4.99E-02;48 hours;cageseq
+Cageseq_48h;negative regulation of RNA metabolic process (GO:0051253);594;125;86.64;+;1.44;8.13E-06;3.26E-02;48 hours;cageseq
+Cageseq_48h;negative regulation of RNA biosynthetic process (GO:1902679);547;115;79.78;+;1.44;2.13E-05;4.27E-02;48 hours;cageseq
+Cageseq_48h;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;136;96.55;+;1.41;1.27E-05;3.81E-02;48 hours;cageseq
+Cageseq_48h;negative regulation of cellular process (GO:0048523);2016;351;294.04;+;1.19;2.43E-05;4.18E-02;48 hours;cageseq
+Proseq_0min;respiratory tube development (GO:0030323);65;59;45.10;+;1.31;6.18E-05;3.72E-02;0 minutes;proseq
+Proseq_0min;lung development (GO:0030324);63;57;43.71;+;1.30;9.23E-05;4.63E-02;0 minutes;proseq
+Proseq_0min;regulation of phosphate metabolic process (GO:0019220);283;227;196.35;+;1.16;3.13E-05;2.10E-02;0 minutes;proseq
+Proseq_0min;regulation of phosphorus metabolic process (GO:0051174);283;227;196.35;+;1.16;3.13E-05;1.99E-02;0 minutes;proseq
+Proseq_0min;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;504;459.32;+;1.10;6.27E-05;3.60E-02;0 minutes;proseq
+Proseq_0min;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;838;771.54;+;1.09;1.80E-06;3.09E-03;0 minutes;proseq
+Proseq_0min;regulation of transcription by RNA polymerase II (GO:0006357);1117;838;775.01;+;1.08;6.30E-06;7.58E-03;0 minutes;proseq
+Proseq_0min;positive regulation of biosynthetic process (GO:0009891);1161;871;805.54;+;1.08;3.80E-06;5.08E-03;0 minutes;proseq
+Proseq_0min;negative regulation of metabolic process (GO:0009892);1185;885;822.19;+;1.08;1.04E-05;9.63E-03;0 minutes;proseq
+Proseq_0min;negative regulation of macromolecule metabolic process (GO:0010605);1091;812;756.97;+;1.07;6.81E-05;3.73E-02;0 minutes;proseq
+Proseq_0min;positive regulation of macromolecule metabolic process (GO:0010604);1392;1031;965.81;+;1.07;1.90E-05;1.52E-02;0 minutes;proseq
+Proseq_0min;positive regulation of metabolic process (GO:0009893);1519;1124;1053.93;+;1.07;8.24E-06;8.26E-03;0 minutes;proseq
+Proseq_0min;regulation of gene expression (GO:0010468);2068;1526;1434.84;+;1.06;1.59E-07;3.19E-04;0 minutes;proseq
+Proseq_0min;regulation of primary metabolic process (GO:0080090);2205;1627;1529.89;+;1.06;4.04E-08;2.43E-04;0 minutes;proseq
+Proseq_0min;regulation of macromolecule biosynthetic process (GO:0010556);2113;1559;1466.06;+;1.06;1.02E-07;3.07E-04;0 minutes;proseq
+Proseq_0min;regulation of biosynthetic process (GO:0009889);2183;1609;1514.63;+;1.06;9.57E-08;3.84E-04;0 minutes;proseq
+Proseq_0min;regulation of metabolic process (GO:0019222);2610;1921;1810.89;+;1.06;2.11E-09;2.54E-05;0 minutes;proseq
+Proseq_0min;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;1247;1178.12;+;1.06;2.67E-05;2.01E-02;0 minutes;proseq
+Proseq_0min;regulation of macromolecule metabolic process (GO:0060255);2405;1764;1668.66;+;1.06;1.41E-07;3.39E-04;0 minutes;proseq
+Proseq_0min;negative regulation of cellular process (GO:0048523);2016;1467;1398.76;+;1.05;7.81E-05;4.09E-02;0 minutes;proseq
+Proseq_0min;positive regulation of biological process (GO:0048518);2454;1784;1702.66;+;1.05;7.78E-06;8.51E-03;0 minutes;proseq
+Proseq_0min;positive regulation of cellular process (GO:0048522);2356;1712;1634.66;+;1.05;1.78E-05;1.53E-02;0 minutes;proseq
+Proseq_0min;regulation of cellular process (GO:0050794);4104;2936;2847.48;+;1.03;2.04E-06;3.07E-03;0 minutes;proseq
+Proseq_0min;regulation of biological process (GO:0050789);4222;3007;2929.35;+;1.03;2.78E-05;1.97E-02;0 minutes;proseq
+Proseq_15min;regulation of phosphate metabolic process (GO:0019220);283;225;194.56;+;1.16;4.52E-05;2.47E-02;15 minutes;proseq
+Proseq_15min;regulation of phosphorus metabolic process (GO:0051174);283;225;194.56;+;1.16;4.52E-05;2.36E-02;15 minutes;proseq
+Proseq_15min;negative regulation of RNA metabolic process (GO:0051253);594;450;408.36;+;1.10;9.64E-05;4.84E-02;15 minutes;proseq
+Proseq_15min;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;501;455.11;+;1.10;3.95E-05;2.50E-02;15 minutes;proseq
+Proseq_15min;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;832;764.48;+;1.09;1.44E-06;2.17E-03;15 minutes;proseq
+Proseq_15min;positive regulation of biosynthetic process (GO:0009891);1161;864;798.17;+;1.08;3.66E-06;4.41E-03;15 minutes;proseq
+Proseq_15min;negative regulation of metabolic process (GO:0009892);1185;880;814.67;+;1.08;5.18E-06;4.80E-03;15 minutes;proseq
+Proseq_15min;regulation of transcription by RNA polymerase II (GO:0006357);1117;829;767.92;+;1.08;1.37E-05;1.10E-02;15 minutes;proseq
+Proseq_15min;negative regulation of macromolecule metabolic process (GO:0010605);1091;807;750.04;+;1.08;4.08E-05;2.46E-02;15 minutes;proseq
+Proseq_15min;positive regulation of macromolecule metabolic process (GO:0010604);1392;1027;956.97;+;1.07;4.71E-06;4.73E-03;15 minutes;proseq
+Proseq_15min;positive regulation of metabolic process (GO:0009893);1519;1120;1044.28;+;1.07;1.74E-06;2.33E-03;15 minutes;proseq
+Proseq_15min;regulation of primary metabolic process (GO:0080090);2205;1615;1515.90;+;1.07;2.54E-08;1.53E-04;15 minutes;proseq
+Proseq_15min;regulation of gene expression (GO:0010468);2068;1512;1421.71;+;1.06;2.54E-07;5.09E-04;15 minutes;proseq
+Proseq_15min;regulation of macromolecule biosynthetic process (GO:0010556);2113;1544;1452.65;+;1.06;2.21E-07;5.31E-04;15 minutes;proseq
+Proseq_15min;regulation of metabolic process (GO:0019222);2610;1907;1794.33;+;1.06;1.13E-09;1.35E-05;15 minutes;proseq
+Proseq_15min;regulation of biosynthetic process (GO:0009889);2183;1593;1500.77;+;1.06;2.09E-07;6.27E-04;15 minutes;proseq
+Proseq_15min;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;1236;1167.34;+;1.06;2.98E-05;2.11E-02;15 minutes;proseq
+Proseq_15min;regulation of macromolecule metabolic process (GO:0060255);2405;1750;1653.39;+;1.06;1.06E-07;4.26E-04;15 minutes;proseq
+Proseq_15min;negative regulation of cellular process (GO:0048523);2016;1458;1385.96;+;1.05;3.63E-05;2.43E-02;15 minutes;proseq
+Proseq_15min;positive regulation of cellular process (GO:0048522);2356;1701;1619.71;+;1.05;7.23E-06;6.22E-03;15 minutes;proseq
+Proseq_15min;negative regulation of biological process (GO:0048519);2089;1508;1436.15;+;1.05;4.35E-05;2.50E-02;15 minutes;proseq
+Proseq_15min;positive regulation of biological process (GO:0048518);2454;1771;1687.08;+;1.05;4.59E-06;5.02E-03;15 minutes;proseq
+Proseq_15min;regulation of cellular process (GO:0050794);4104;2912;2821.42;+;1.03;1.37E-06;2.35E-03;15 minutes;proseq
+Proseq_15min;regulation of biological process (GO:0050789);4222;2982;2902.55;+;1.03;1.91E-05;1.44E-02;15 minutes;proseq
+Proseq_30min;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;831;767.93;+;1.08;6.44E-06;9.69E-03;30 minutes;proseq
+Proseq_30min;regulation of transcription by RNA polymerase II (GO:0006357);1117;831;771.38;+;1.08;2.10E-05;2.10E-02;30 minutes;proseq
+Proseq_30min;positive regulation of biosynthetic process (GO:0009891);1161;862;801.77;+;1.08;2.40E-05;2.22E-02;30 minutes;proseq
+Proseq_30min;negative regulation of metabolic process (GO:0009892);1185;876;818.34;+;1.07;5.93E-05;4.20E-02;30 minutes;proseq
+Proseq_30min;positive regulation of macromolecule metabolic process (GO:0010604);1392;1025;961.29;+;1.07;3.10E-05;2.66E-02;30 minutes;proseq
+Proseq_30min;positive regulation of metabolic process (GO:0009893);1519;1117;1048.99;+;1.06;1.57E-05;2.10E-02;30 minutes;proseq
+Proseq_30min;regulation of primary metabolic process (GO:0080090);2205;1618;1522.73;+;1.06;8.27E-08;4.98E-04;30 minutes;proseq
+Proseq_30min;regulation of macromolecule biosynthetic process (GO:0010556);2113;1549;1459.20;+;1.06;3.22E-07;9.70E-04;30 minutes;proseq
+Proseq_30min;regulation of gene expression (GO:0010468);2068;1516;1428.12;+;1.06;5.00E-07;1.20E-03;30 minutes;proseq
+Proseq_30min;regulation of metabolic process (GO:0019222);2610;1911;1802.42;+;1.06;3.86E-09;4.65E-05;30 minutes;proseq
+Proseq_30min;regulation of biosynthetic process (GO:0009889);2183;1596;1507.54;+;1.06;6.33E-07;1.27E-03;30 minutes;proseq
+Proseq_30min;regulation of macromolecule metabolic process (GO:0060255);2405;1756;1660.85;+;1.06;1.54E-07;6.17E-04;30 minutes;proseq
+Proseq_30min;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;1239;1172.61;+;1.06;5.45E-05;4.10E-02;30 minutes;proseq
+Proseq_30min;positive regulation of biological process (GO:0048518);2454;1773;1694.69;+;1.05;1.76E-05;2.12E-02;30 minutes;proseq
+Proseq_30min;positive regulation of cellular process (GO:0048522);2356;1702;1627.01;+;1.05;3.47E-05;2.78E-02;30 minutes;proseq
+Proseq_30min;regulation of cellular process (GO:0050794);4104;2923;2834.15;+;1.03;1.92E-06;3.30E-03;30 minutes;proseq
+Proseq_30min;regulation of biological process (GO:0050789);4222;2995;2915.64;+;1.03;1.82E-05;1.99E-02;30 minutes;proseq
+Proseq_60min;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;836;770.55;+;1.08;2.61E-06;3.93E-03;60 minutes;proseq
+Proseq_60min;positive regulation of biosynthetic process (GO:0009891);1161;867;804.51;+;1.08;1.05E-05;1.26E-02;60 minutes;proseq
+Proseq_60min;regulation of transcription by RNA polymerase II (GO:0006357);1117;834;774.02;+;1.08;1.72E-05;1.59E-02;60 minutes;proseq
+Proseq_60min;negative regulation of metabolic process (GO:0009892);1185;881;821.14;+;1.07;3.12E-05;2.21E-02;60 minutes;proseq
+Proseq_60min;positive regulation of macromolecule metabolic process (GO:0010604);1392;1030;964.58;+;1.07;1.68E-05;1.68E-02;60 minutes;proseq
+Proseq_60min;positive regulation of metabolic process (GO:0009893);1519;1123;1052.58;+;1.07;7.26E-06;9.71E-03;60 minutes;proseq
+Proseq_60min;regulation of primary metabolic process (GO:0080090);2205;1626;1527.94;+;1.06;3.01E-08;1.81E-04;60 minutes;proseq
+Proseq_60min;regulation of gene expression (GO:0010468);2068;1522;1433.01;+;1.06;3.03E-07;7.30E-04;60 minutes;proseq
+Proseq_60min;regulation of macromolecule biosynthetic process (GO:0010556);2113;1555;1464.19;+;1.06;2.24E-07;6.75E-04;60 minutes;proseq
+Proseq_60min;regulation of metabolic process (GO:0019222);2610;1917;1808.58;+;1.06;4.18E-09;5.03E-05;60 minutes;proseq
+Proseq_60min;regulation of biosynthetic process (GO:0009889);2183;1602;1512.70;+;1.06;4.47E-07;8.97E-04;60 minutes;proseq
+Proseq_60min;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;1245;1176.62;+;1.06;3.10E-05;2.33E-02;60 minutes;proseq
+Proseq_60min;regulation of macromolecule metabolic process (GO:0060255);2405;1761;1666.53;+;1.06;1.94E-07;7.77E-04;60 minutes;proseq
+Proseq_60min;positive regulation of cellular process (GO:0048522);2356;1709;1632.58;+;1.05;2.31E-05;1.86E-02;60 minutes;proseq
+Proseq_60min;positive regulation of biological process (GO:0048518);2454;1780;1700.48;+;1.05;1.31E-05;1.43E-02;60 minutes;proseq
+Proseq_60min;regulation of cellular process (GO:0050794);4104;2933;2843.84;+;1.03;1.82E-06;3.13E-03;60 minutes;proseq
+Proseq_60min;regulation of biological process (GO:0050789);4222;3004;2925.61;+;1.03;2.23E-05;1.91E-02;60 minutes;proseq
+Proseq_24h;regulation of phosphate metabolic process (GO:0019220);283;225;195.10;+;1.15;5.86E-05;3.71E-02;24 hours;proseq
+Proseq_24h;regulation of phosphorus metabolic process (GO:0051174);283;225;195.10;+;1.15;5.86E-05;3.53E-02;24 hours;proseq
+Proseq_24h;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;829;766.61;+;1.08;7.83E-06;1.05E-02;24 hours;proseq
+Proseq_24h;positive regulation of biosynthetic process (GO:0009891);1161;862;800.39;+;1.08;1.53E-05;1.84E-02;24 hours;proseq
+Proseq_24h;regulation of transcription by RNA polymerase II (GO:0006357);1117;829;770.06;+;1.08;2.52E-05;2.17E-02;24 hours;proseq
+Proseq_24h;negative regulation of metabolic process (GO:0009892);1185;878;816.94;+;1.07;2.10E-05;2.11E-02;24 hours;proseq
+Proseq_24h;positive regulation of metabolic process (GO:0009893);1519;1118;1047.20;+;1.07;7.70E-06;1.16E-02;24 hours;proseq
+Proseq_24h;positive regulation of macromolecule metabolic process (GO:0010604);1392;1023;959.65;+;1.07;3.63E-05;2.73E-02;24 hours;proseq
+Proseq_24h;regulation of primary metabolic process (GO:0080090);2205;1618;1520.13;+;1.06;3.88E-08;2.34E-04;24 hours;proseq
+Proseq_24h;regulation of gene expression (GO:0010468);2068;1515;1425.68;+;1.06;3.28E-07;6.58E-04;24 hours;proseq
+Proseq_24h;regulation of macromolecule biosynthetic process (GO:0010556);2113;1547;1456.70;+;1.06;2.85E-07;6.87E-04;24 hours;proseq
+Proseq_24h;regulation of metabolic process (GO:0019222);2610;1910;1799.34;+;1.06;2.07E-09;2.49E-05;24 hours;proseq
+Proseq_24h;regulation of biosynthetic process (GO:0009889);2183;1597;1504.96;+;1.06;2.00E-07;6.02E-04;24 hours;proseq
+Proseq_24h;regulation of macromolecule metabolic process (GO:0060255);2405;1754;1658.01;+;1.06;1.36E-07;5.44E-04;24 hours;proseq
+Proseq_24h;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;1236;1170.60;+;1.06;7.18E-05;4.11E-02;24 hours;proseq
+Proseq_24h;negative regulation of cellular process (GO:0048523);2016;1463;1389.83;+;1.05;2.42E-05;2.24E-02;24 hours;proseq
+Proseq_24h;negative regulation of biological process (GO:0048519);2089;1512;1440.16;+;1.05;4.23E-05;2.83E-02;24 hours;proseq
+Proseq_24h;positive regulation of cellular process (GO:0048522);2356;1700;1624.23;+;1.05;2.78E-05;2.23E-02;24 hours;proseq
+Proseq_24h;positive regulation of biological process (GO:0048518);2454;1770;1691.79;+;1.05;2.02E-05;2.21E-02;24 hours;proseq
+Proseq_24h;regulation of cellular process (GO:0050794);4104;2917;2829.30;+;1.03;2.91E-06;5.01E-03;24 hours;proseq
+Proseq_24h;regulation of biological process (GO:0050789);4222;2987;2910.65;+;1.03;3.81E-05;2.70E-02;24 hours;proseq
+Proseq_48h;respiratory tube development (GO:0030323);65;59;45.20;+;1.31;6.26E-05;4.43E-02;48 hours;proseq
+Proseq_48h;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);662;505;460.39;+;1.10;6.13E-05;4.61E-02;48 hours;proseq
+Proseq_48h;positive regulation of macromolecule biosynthetic process (GO:0010557);1112;838;773.34;+;1.08;3.50E-06;5.26E-03;48 hours;proseq
+Proseq_48h;regulation of transcription by RNA polymerase II (GO:0006357);1117;838;776.82;+;1.08;1.18E-05;1.29E-02;48 hours;proseq
+Proseq_48h;positive regulation of biosynthetic process (GO:0009891);1161;870;807.42;+;1.08;9.94E-06;1.20E-02;48 hours;proseq
+Proseq_48h;negative regulation of metabolic process (GO:0009892);1185;881;824.11;+;1.07;7.35E-05;4.65E-02;48 hours;proseq
+Proseq_48h;positive regulation of macromolecule metabolic process (GO:0010604);1392;1032;968.07;+;1.07;2.85E-05;2.29E-02;48 hours;proseq
+Proseq_48h;positive regulation of metabolic process (GO:0009893);1519;1124;1056.39;+;1.06;1.66E-05;1.53E-02;48 hours;proseq
+Proseq_48h;regulation of gene expression (GO:0010468);2068;1525;1438.20;+;1.06;6.01E-07;1.45E-03;48 hours;proseq
+Proseq_48h;regulation of primary metabolic process (GO:0080090);2205;1626;1533.47;+;1.06;1.58E-07;9.53E-04;48 hours;proseq
+Proseq_48h;regulation of macromolecule biosynthetic process (GO:0010556);2113;1557;1469.49;+;1.06;5.25E-07;2.11E-03;48 hours;proseq
+Proseq_48h;regulation of biosynthetic process (GO:0009889);2183;1606;1518.17;+;1.06;6.54E-07;1.31E-03;48 hours;proseq
+Proseq_48h;regulation of metabolic process (GO:0019222);2610;1919;1815.13;+;1.06;1.64E-08;1.98E-04;48 hours;proseq
+Proseq_48h;regulation of nucleobase-containing compound metabolic process (GO:0019219);1698;1246;1180.88;+;1.06;6.58E-05;4.40E-02;48 hours;proseq
+Proseq_48h;regulation of macromolecule metabolic process (GO:0060255);2405;1763;1672.56;+;1.05;5.85E-07;1.76E-03;48 hours;proseq
+Proseq_48h;positive regulation of biological process (GO:0048518);2454;1789;1706.64;+;1.05;5.81E-06;7.78E-03;48 hours;proseq
+Proseq_48h;positive regulation of cellular process (GO:0048522);2356;1717;1638.49;+;1.05;1.34E-05;1.34E-02;48 hours;proseq
+Proseq_48h;regulation of cellular process (GO:0050794);4104;2941;2854.14;+;1.03;2.95E-06;5.07E-03;48 hours;proseq
+Proseq_48h;regulation of biological process (GO:0050789);4222;3014;2936.20;+;1.03;2.41E-05;2.07E-02;48 hours;proseq
+Proseq_BOTH;regulation of metabolic process (GO:0019222);2610;955;865.76;+;1.10;2.67E-06;3.21E-02;heatshock;proseq

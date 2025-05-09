@@ -61,7 +61,7 @@ merged <- merge(bed1, bed2, by = "NameCol", all = FALSE)
 # === Write output
 write.table(merged, file = output_file, sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
 
-cat(paste("✅ Matching rows (by 'Name_') written to:", output_file, "\n"))
+cat(paste("Matching rows (by 'Name_') written to:", output_file, "\n"))
 
 # bed1_df <- read.delim("~/Documents/Vihervaara/hg19/chiapet/enhancer_ChIAPETLeft_overlap.bed", header=FALSE)
 # bed2_df <- read.delim("~/Documents/Vihervaara/hg19/chiapet/enhancer_ChIAPETRight_overlap.bed", header=FALSE)

@@ -4,13 +4,6 @@ library(ggplot2)
 library(dplyr)
 library(broom)
 
-FANTOM5_0min <- read.delim("~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_0min.bed", header=FALSE)
-FANTOM5_15min <- read.delim("~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_15min.bed", header=FALSE)
-FANTOM5_30min <- read.delim("~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_30min.bed", header=FALSE)
-FANTOM5_60min <- read.delim("~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_60min.bed", header=FALSE)
-FANTOM5_24h <- read.delim("~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_1440min.bed", header=FALSE)
-FANTOM5_48h <- read.delim("~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_2880min.bed", header=FALSE)
-
 overlap_0min <- read.delim("~/Documents/Vihervaara/hg19/overlapping_enhancers_He_0_min.bed", header=FALSE)
 overlap_15min <- read.delim("~/Documents/Vihervaara/hg19/overlapping_enhancers_He_15_min.bed", header=FALSE)
 overlap_30min <- read.delim("~/Documents/Vihervaara/hg19/overlapping_enhancers_He_30_min.bed", header=FALSE)
@@ -18,92 +11,36 @@ overlap_60min <- read.delim("~/Documents/Vihervaara/hg19/overlapping_enhancers_H
 overlap_24h <- read.delim("~/Documents/Vihervaara/hg19/overlapping_enhancers_He_24h.bed", header=FALSE)
 overlap_48h <- read.delim("~/Documents/Vihervaara/hg19/overlapping_enhancers_He_48h.bed", header=FALSE)
 
-PRO_He0_eRPK <- read.delim("~/Documents/Vihervaara/hg19/enhancers/He0_eRPK.bed", header=FALSE)
-PRO_He15_eRPK <- read.delim("~/Documents/Vihervaara/hg19/enhancers/He15_eRPK.bed", header=FALSE)
-PRO_He30_eRPK <- read.delim("~/Documents/Vihervaara/hg19/enhancers/He30_eRPK.bed", header=FALSE)
-PRO_He60_eRPK <- read.delim("~/Documents/Vihervaara/hg19/enhancers/He60_eRPK.bed", header=FALSE)
-PRO_He24h_eRPK <- read.delim("~/Documents/Vihervaara/hg19/enhancers/He24h_eRPK.bed", header=FALSE)
-PRO_He48h_eRPK <- read.delim("~/Documents/Vihervaara/hg19/enhancers/He48h_eRPK.bed", header=FALSE)
-
-FANTOM5_0min <- FANTOM5_0min %>% mutate(V3 - V2)
-FANTOM5_15min <- FANTOM5_15min %>% mutate(V3 - V2)
-FANTOM5_30min <- FANTOM5_30min %>% mutate(V3 - V2)
-FANTOM5_60min <- FANTOM5_60min %>% mutate(V3 - V2)
-FANTOM5_24h <- FANTOM5_24h %>% mutate(V3 - V2)
-FANTOM5_48h <- FANTOM5_48h %>% mutate(V3 - V2)
-
-overlap_0min <- overlap_0min %>% mutate(V3 - V2)
-overlap_15min <- overlap_15min %>% mutate(V3 - V2)
-overlap_30min <- overlap_30min %>% mutate(V3 - V2)
-overlap_60min <- overlap_60min %>% mutate(V3 - V2)
-overlap_24h <- overlap_24h %>% mutate(V3 - V2)
-overlap_48h <- overlap_48h %>% mutate(V3 - V2)
-
-PRO_He0_eRPK <- PRO_He0_eRPK %>% mutate(V3 - V2)
-PRO_He15_eRPK <- PRO_He15_eRPK %>% mutate(V3 - V2)
-PRO_He30_eRPK <- PRO_He30_eRPK %>% mutate(V3 - V2)
-PRO_He60_eRPK <- PRO_He60_eRPK %>% mutate(V3 - V2)
-PRO_He24h_eRPK <- PRO_He24h_eRPK %>% mutate(V3 - V2)
-PRO_He48h_eRPK <- PRO_He48h_eRPK %>% mutate(V3 - V2)
-
-FANTOM5_0min <- FANTOM5_0min %>% mutate(time = "0 min", seq = "CAGE")
-FANTOM5_15min <- FANTOM5_15min %>% mutate(time = "15 min", seq = "CAGE")
-FANTOM5_30min <- FANTOM5_30min %>% mutate(time = "30 min", seq = "CAGE")
-FANTOM5_60min <- FANTOM5_60min %>% mutate(time = "60 min", seq = "CAGE")
-FANTOM5_24h <- FANTOM5_24h %>% mutate(time = "24 h", seq = "CAGE")
-FANTOM5_48h <- FANTOM5_48h %>% mutate(time = "48 h", seq = "CAGE")
-
-overlap_0min <- overlap_0min %>% mutate(time = "0 min", seq = "both")
-overlap_15min <- overlap_15min %>% mutate(time = "15 min", seq = "both")
-overlap_30min <- overlap_30min %>% mutate(time = "30 min", seq = "both")
-overlap_60min <- overlap_60min %>% mutate(time = "60 min", seq = "both")
-overlap_24h <- overlap_24h %>% mutate(time = "24 h", seq = "both")
-overlap_48h <- overlap_48h %>% mutate(time = "48 h", seq = "both")
-
-PRO_He0_eRPK <- PRO_He0_eRPK %>% mutate(time = "0 min", seq = "PRO")
-PRO_He15_eRPK <- PRO_He15_eRPK %>% mutate(time = "15 min", seq = "PRO")
-PRO_He30_eRPK <- PRO_He30_eRPK %>% mutate(time = "30 min", seq = "PRO")
-PRO_He60_eRPK <- PRO_He60_eRPK %>% mutate(time = "60 min", seq = "PRO")
-PRO_He24h_eRPK <- PRO_He24h_eRPK %>% mutate(time = "24 h", seq = "PRO")
-PRO_He48h_eRPK <- PRO_He48h_eRPK %>% mutate(time = "48 h", seq = "PRO")
-
-colnames(PRO_He0_eRPK) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(PRO_He15_eRPK) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(PRO_He30_eRPK) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(PRO_He60_eRPK) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(PRO_He24h_eRPK) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(PRO_He48h_eRPK) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-
-colnames(FANTOM5_0min) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(FANTOM5_15min) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(FANTOM5_30min) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(FANTOM5_60min) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(FANTOM5_24h) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
-colnames(FANTOM5_48h) <- c("chr", "eStart", "eEnd", "RPK", "length", "time", "seq")
+overlap_0min <- overlap_0min %>% mutate(V3 - V2) %>% mutate(time = "0 min", seq = "both")
+overlap_15min <- overlap_15min %>% mutate(V3 - V2) %>% mutate(time = "15 min", seq = "both")
+overlap_30min <- overlap_30min %>% mutate(V3 - V2) %>% mutate(time = "30 min", seq = "both")
+overlap_60min <- overlap_60min %>% mutate(V3 - V2) %>% mutate(time = "60 min", seq = "both")
+overlap_24h <- overlap_24h %>% mutate(V3 - V2) %>% mutate(time = "24 h", seq = "both")
+overlap_48h <- overlap_48h %>% mutate(V3 - V2) %>% mutate(time = "48 h", seq = "both")
 
 colnames(overlap_0min) <- c("chr_CAGE_seq", "eStart_CAGE_seq", "eEnd_CAGE_seq", 
                             "RPK_CAGE_seq", "chr_PRO_seq", "eStart_PRO_seq", 
-                            "eEnd_PRO_seq", "name_PRO_seq", "RPK_PRO_seq", 
+                            "eEnd_PRO_seq", "RPK_PRO_seq", 
                             "length_CAGE_seq", "time", "seq")
 colnames(overlap_15min) <- c("chr_CAGE_seq", "eStart_CAGE_seq", "eEnd_CAGE_seq", 
                             "RPK_CAGE_seq", "chr_PRO_seq", "eStart_PRO_seq", 
-                            "eEnd_PRO_seq", "name_PRO_seq", "RPK_PRO_seq", 
+                            "eEnd_PRO_seq", "RPK_PRO_seq", 
                             "length_CAGE_seq", "time", "seq")
 colnames(overlap_30min) <- c("chr_CAGE_seq", "eStart_CAGE_seq", "eEnd_CAGE_seq", 
                             "RPK_CAGE_seq", "chr_PRO_seq", "eStart_PRO_seq", 
-                            "eEnd_PRO_seq", "name_PRO_seq", "RPK_PRO_seq", 
+                            "eEnd_PRO_seq", "RPK_PRO_seq", 
                             "length_CAGE_seq", "time", "seq")
 colnames(overlap_60min) <- c("chr_CAGE_seq", "eStart_CAGE_seq", "eEnd_CAGE_seq", 
                             "RPK_CAGE_seq", "chr_PRO_seq", "eStart_PRO_seq", 
-                            "eEnd_PRO_seq", "name_PRO_seq", "RPK_PRO_seq", 
+                            "eEnd_PRO_seq", "RPK_PRO_seq", 
                             "length_CAGE_seq", "time", "seq")
 colnames(overlap_24h) <- c("chr_CAGE_seq", "eStart_CAGE_seq", "eEnd_CAGE_seq", 
                             "RPK_CAGE_seq", "chr_PRO_seq", "eStart_PRO_seq", 
-                            "eEnd_PRO_seq", "name_PRO_seq", "RPK_PRO_seq", 
+                            "eEnd_PRO_seq", "RPK_PRO_seq", 
                             "length_CAGE_seq", "time", "seq")
 colnames(overlap_48h) <- c("chr_CAGE_seq", "eStart_CAGE_seq", "eEnd_CAGE_seq", 
                             "RPK_CAGE_seq", "chr_PRO_seq", "eStart_PRO_seq", 
-                            "eEnd_PRO_seq", "name_PRO_seq", "RPK_PRO_seq", 
+                            "eEnd_PRO_seq", "RPK_PRO_seq", 
                             "length_CAGE_seq", "time", "seq")
 
 overlapping_enhancers <- bind_rows(overlap_0min, overlap_15min, overlap_30min, overlap_60min, overlap_24h, overlap_48h)
@@ -149,6 +86,4 @@ ggplot(df, aes(x = log_CAGE, y = log_PRO)) +
   theme_minimal() +
   labs(
     x = "log10(CAGE-seq RPK)",
-    y = "log10(PRO-seq RPK)",
-    title = "Shared Enhancers, Hemin Treatments"
-  )
+    y = "log10(PRO-seq RPK)")

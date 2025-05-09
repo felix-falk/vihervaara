@@ -1,90 +1,97 @@
-Find overlapping enhancers between hg19 K562 CAGE-seq and PRO-seq (HS DATA): 
+Overlapping enhancers between CAGE-seq and PRO-seq HS: 
 
-bedtools intersect -wa -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed -b ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed >  ~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
+bedtools intersect -wa -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed \
+-b ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed > \
+~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
 
 wc -l ~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
 
 # 3484
 
-Find overlapping enhancers between hg19 K562 CAGE-seq and PRO-seq (HEMIN DATA): 
+Overlapping enhancers between CAGE-seq and PRO-seq HEMIN: 
 
-bedtools intersect -wa -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed -b ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt >  ~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
+bedtools intersect -wa -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed \
+-b ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt > \
+~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
 
 wc -l ~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
 
 # 4427
 
-Find overlapping enhancer between hg19 PRO-seq HEMIN and PRO-seq HS data: 
+Overlapping enhancer between PRO-seq HEMIN and PRO-seq HS data: 
 
-bedtools intersect -wa -a ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed -b ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt >  ~/Documents/Vihervaara/hg19/overlapping_enhancers_PRO_PRO.bed
+bedtools intersect -wa -a \
+~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed -b \
+~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt > \
+~/Documents/Vihervaara/hg19/overlapping_enhancers_PRO_PRO.bed
 
 wc -l ~/Documents/Vihervaara/hg19/overlapping_enhancers_PRO_PRO.bed
 
 # 14577
 
-Find enhancers exclusive to CAGE-seq (vs PRO-seq HEMIN DATA): 
+Enhancers exclusive to CAGE-seq vs PRO-seq HEMIN data: 
 
-bedtools intersect -v -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed -b ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt >  ~/Documents/Vihervaara/hg19/only_CAGE_enhancers.bed
+bedtools intersect -v -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed \
+-b ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt > \
+~/Documents/Vihervaara/hg19/only_CAGE_enhancers.bed
 
 wc -l ~/Documents/Vihervaara/hg19/only_CAGE_enhancers.bed
 
 # 10485
 
-Find enhancers exclusive to CAGE-seq (vs PRO-seq HS DATA): 
+Enhancers exclusive to CAGE-seq vs PRO-seq HS data: 
 
-bedtools intersect -v -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed -b ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed >  ~/Documents/Vihervaara/hg19/only_CAGE_vsHS_enhancers.bed
+bedtools intersect -v -a ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed \
+-b ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed > \
+~/Documents/Vihervaara/hg19/only_CAGE_vsHS_enhancers.bed
 
 wc -l ~/Documents/Vihervaara/hg19/only_CAGE_vsHS_enhancers.bed
 
 # 11697
 
-Find enhancers exclusive to HEMIN PRO-seq (vs CAGE-seq HEMIN DATA): 
+Enhancers exclusive to HEMIN PRO-seq vs CAGE-seq data: 
 
-bedtools intersect -v -a ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt -b ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed >  ~/Documents/Vihervaara/hg19/only_PRO_enhancers.bed
+bedtools intersect -v -a \
+~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt -b \
+~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed > \
+~/Documents/Vihervaara/hg19/only_PRO_enhancers.bed
 
 wc -l ~/Documents/Vihervaara/hg19/only_PRO_enhancers.bed
 
 # 26503
 
-Find enhancers exclusive to HEMIN PRO-seq (vs PRO-seq HS DATA): 
+Find enhancers exclusive to HEMIN PRO-seq vs PRO-seq HS DATA: 
 
-bedtools intersect -v -a ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt -b ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed >  ~/Documents/Vihervaara/hg19/only_PRO_enhancers_vshs.bed
+bedtools intersect -v -a \
+~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt -b \
+~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed > \
+~/Documents/Vihervaara/hg19/only_PRO_enhancers_vshs.bed
 
 wc -l ~/Documents/Vihervaara/hg19/only_PRO_enhancers_vshs.bed
 
+# 17969
+
 Find enhancers exclusive to HS PRO-seq (vs PRO-seq HEMIN DATA): 
 
-bedtools intersect -v -a ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed -b ~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt >  ~/Documents/Vihervaara/hg19/only_PRO_enhancers_vsHEMIN.bed
+bedtools intersect -v -a \
+~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed -b \
+~/Documents/Vihervaara/hg19/proseq/K562_hg19_hemin_enhancers.txt > \
+~/Documents/Vihervaara/hg19/only_PRO_enhancers_vsHEMIN.bed
 
 wc -l ~/Documents/Vihervaara/hg19/only_PRO_enhancers_vsHEMIN.bed
 
+# 15036
+
 Find enhancers exclusive to HS PRO-seq (vs CAGE-seq HEMIN DATA): 
 
-bedtools intersect -v -a ~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed -b ~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed >  ~/Documents/Vihervaara/hg19/only_PRO_enhancers_vsCAGE.bed
+bedtools intersect -v -a \
+~/Documents/Vihervaara/hg19/enhancers/hg19_K562_enhancers_NatCom_dTREs.bed -b \
+~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed > \
+~/Documents/Vihervaara/hg19/only_PRO_enhancers_vsCAGE.bed
 
 wc -l ~/Documents/Vihervaara/hg19/only_PRO_enhancers_vsCAGE.bed
 
 # 26158
-
-Count number of overlapping enhancers: 
-
-wc -l ~/Documents/Vihervaara/hg19/overlapping_enhancers_CAGE_PRO.bed
-
-wc -l ~/Documents/Vihervaara/hg19/overlapping_enhancers_PRO_CAGE.bed
-
-3915
-
-Count number of enhancers exclusive to CAGE: 
-
-wc -l ~/Documents/Vihervaara/hg19/only_CAGE_enhancers.bed
-
-15738
-
-Count number of enhancers exclusive to PRO: 
-
-wc -l ~/Documents/Vihervaara/hg19/only_PRO_enhancers.bed
-
-25747
 
 ### Find overlap between hemin PRO-seq and CAGE-seq enhancers, separated by condition! 
 

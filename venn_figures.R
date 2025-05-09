@@ -10,23 +10,23 @@ library(scales)
 
 # Define the datasets
 venn_data <- data.frame(
-  comparison = c("CAGE vs PRO (Heat shock)", "CAGE vs PRO (Hemin)", "PRO (HS) vs PRO (Hemin)"),
-  group1 = c("CAGE-seq", "CAGE-seq", "PRO (HS)"),
-  group2 = c("PRO (HS)", "PRO (Hemin)", "PRO (Hemin)"),
+  comparison = c("CAGE-seq vs PRO-seq (HS)", "CAGE-seq vs PRO-seq (Hemin)", "PRO-seq (HS) vs PRO-seq (Hemin)"),
+  group1 = c("CAGE-seq", "CAGE-seq", "PRO-seq (Heat shock)"),
+  group2 = c("PRO-seq (Heat shock)", "PRO-seq (Hemin)", "PRO-seq (Hemin)"),
   group1_only = c(11697, 10485, 15036),
   group2_only = c(26158, 26503, 17969),
   overlap = c(3484, 4427, 14577),
   stringsAsFactors = FALSE
 )
 
-# Assign consistent grayscale colors to groups
+# Assign grayscale colors to groups
 group_colors <- c(
-  "CAGE-seq" = "white",   # light grey (gray90)
-  "PRO (HS)" = "gray60",   # mid grey (gray60)
-  "PRO (Hemin)" = "gray30" # dark grey (gray30)
+  "CAGE-seq" = "white",
+  "PRO-seq (Heat shock)" = "gray60",
+  "PRO-seq (Hemin)" = "gray30"
 )
 
-# Blend function for two hex colors
+# Blend function for overlapping color
 blend_colors <- function(col1, col2) {
   rgb_row <- (col2rgb(col1) + col2rgb(col2)) / 2
   rgb(rgb_row[1], rgb_row[2], rgb_row[3], maxColorValue = 255)
@@ -40,27 +40,24 @@ plots <- lapply(seq_len(nrow(venn_data)), function(i) {
   group2 <- row$group2
   overlap_name <- paste0(group1, "&", group2)
   
-  # Blend color for the overlap
-  blended <- blend_colors(group_colors[group1], group_colors[group2])
-  
-  # Define region sizes
+  # Define region sizes (corrected: no double-counting)
   areas <- c(
-    setNames(row$group1_only + row$overlap, group1),
-    setNames(row$group2_only + row$overlap, group2),
+    setNames(row$group1_only, group1),
+    setNames(row$group2_only, group2),
     setNames(row$overlap, overlap_name)
   )
   
-  # Assign corresponding fills
-  fills <- list(
-    fill = c(group_colors[group1], group_colors[group2], blended),
-    alpha = 0.9
+  # Euler plot
+  plot(
+    euler(areas),
+    fills = list(
+      fill = c(group_colors[group1], group_colors[group2], blend_colors(group_colors[group1], group_colors[group2])),
+      alpha = 0.9
+    ),
+    labels = NULL,
+    quantities = list(cex = 1.2),
+    main = row$comparison
   )
-  
-  plot(euler(areas),
-       labels = NULL,
-       fills = fills,
-       quantities = list(cex = 0.5),
-       main = row$comparison)
 })
 
 # Build legend
@@ -71,11 +68,14 @@ legend <- legendGrob(
   nrow = 1
 )
 
-# Arrange diagrams and legend
-grid.arrange(do.call(arrangeGrob, c(plots, ncol = length(plots))),
-             legend,
-             nrow = 2,
-             heights = c(10, 1))
+# Arrange all plots with legend
+grid.arrange(
+  do.call(arrangeGrob, c(plots, ncol = length(plots))),
+  legend,
+  nrow = 2,
+  heights = c(10, 1)
+)
+
 
 ### HEMIN COMPARISON
 

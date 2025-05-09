@@ -1,0 +1,107 @@
+seq;motif;REX;GObiologicalprocesscomplete;A;B;expected;overunder;foldenrichment;rawpvalue;FDR
+proseq;enhancer;absent;iron ion transport (GO:0006826);20;20;10.25;+;1.95;2.08E-06;8.36E-03
+proseq;enhancer;absent;embryonic organ development (GO:0048568);164;110;84.07;+;1.31;4.83E-05;4.15E-02
+proseq;enhancer;absent;hemopoiesis (GO:0030097);320;199;164.05;+;1.21;5.86E-05;4.41E-02
+proseq;enhancer;absent;negative regulation of metabolic process (GO:0009892);1182;680;605.95;+;1.12;2.10E-06;6.31E-03
+proseq;enhancer;absent;negative regulation of macromolecule metabolic process (GO:0010605);1089;621;558.27;+;1.11;3.47E-05;3.22E-02
+proseq;enhancer;absent;regulation of gene expression (GO:0010468);2066;1146;1059.13;+;1.08;4.86E-06;8.36E-03
+proseq;enhancer;absent;negative regulation of cellular process (GO:0048523);2012;1113;1031.44;+;1.08;1.44E-05;1.57E-02
+proseq;enhancer;absent;regulation of primary metabolic process (GO:0080090);2202;1218;1128.85;+;1.08;3.80E-06;7.62E-03
+proseq;enhancer;absent;regulation of macromolecule biosynthetic process (GO:0010556);2110;1166;1081.68;+;1.08;1.02E-05;1.37E-02
+proseq;enhancer;absent;positive regulation of cellular process (GO:0048522);2351;1299;1205.23;+;1.08;1.77E-06;1.06E-02
+proseq;enhancer;absent;negative regulation of biological process (GO:0048519);2085;1152;1068.87;+;1.08;1.22E-05;1.47E-02
+proseq;enhancer;absent;positive regulation of biological process (GO:0048518);2448;1350;1254.96;+;1.08;1.51E-06;1.82E-02
+proseq;enhancer;absent;regulation of biosynthetic process (GO:0009889);2180;1200;1117.57;+;1.07;1.96E-05;1.96E-02
+proseq;enhancer;absent;regulation of macromolecule metabolic process (GO:0060255);2401;1319;1230.86;+;1.07;7.64E-06;1.15E-02
+proseq;enhancer;absent;regulation of metabolic process (GO:0019222);2605;1430;1335.44;+;1.07;2.30E-06;5.54E-03
+proseq;enhancer;absent;regulation of cellular process (GO:0050794);4098;2182;2100.82;+;1.04;5.49E-05;4.40E-02
+proseq;enhancer;present;regulation of translation (GO:0006417);202;98;68.99;+;1.42;2.17E-05;2.18E-02
+proseq;enhancer;present;negative regulation of DNA-templated transcription (GO:0045892);545;231;186.13;+;1.24;3.27E-05;2.81E-02
+proseq;enhancer;present;negative regulation of RNA metabolic process (GO:0051253);593;251;202.52;+;1.24;1.59E-05;2.13E-02
+proseq;enhancer;present;negative regulation of RNA biosynthetic process (GO:1902679);546;231;186.47;+;1.24;4.06E-05;3.06E-02
+proseq;enhancer;present;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);660;277;225.40;+;1.23;1.23E-05;1.84E-02
+proseq;enhancer;present;positive regulation of macromolecule biosynthetic process (GO:0010557);1111;442;379.43;+;1.16;1.76E-05;2.12E-02
+proseq;enhancer;present;positive regulation of biosynthetic process (GO:0009891);1160;460;396.16;+;1.16;1.79E-05;1.96E-02
+proseq;enhancer;present;positive regulation of metabolic process (GO:0009893);1516;590;517.74;+;1.14;1.08E-05;1.87E-02
+proseq;enhancer;present;positive regulation of macromolecule metabolic process (GO:0010604);1389;540;474.37;+;1.14;3.66E-05;2.93E-02
+proseq;enhancer;present;regulation of primary metabolic process (GO:0080090);2202;851;752.02;+;1.13;8.01E-08;9.65E-04
+proseq;enhancer;present;regulation of macromolecule biosynthetic process (GO:0010556);2110;810;720.60;+;1.12;9.51E-07;2.86E-03
+proseq;enhancer;present;regulation of nucleobase-containing compound metabolic process (GO:0019219);1696;651;579.21;+;1.12;2.64E-05;2.44E-02
+proseq;enhancer;present;regulation of biosynthetic process (GO:0009889);2180;834;744.51;+;1.12;1.03E-06;2.49E-03
+proseq;enhancer;present;regulation of gene expression (GO:0010468);2066;789;705.58;+;1.12;3.80E-06;7.63E-03
+proseq;enhancer;present;regulation of macromolecule metabolic process (GO:0060255);2401;914;819.98;+;1.11;5.37E-07;2.15E-03
+proseq;enhancer;present;regulation of metabolic process (GO:0019222);2605;988;889.65;+;1.11;2.40E-07;1.44E-03
+proseq;promoter;absent;lung development (GO:0030324);63;57;43.71;+;1.30;9.23E-05;4.83E-02
+proseq;promoter;absent;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);660;502;457.93;+;1.10;7.41E-05;4.46E-02
+proseq;promoter;absent;positive regulation of macromolecule biosynthetic process (GO:0010557);1111;837;770.85;+;1.09;1.80E-06;2.70E-03
+proseq;promoter;absent;positive regulation of biosynthetic process (GO:0009891);1160;870;804.85;+;1.08;4.43E-06;5.92E-03
+proseq;promoter;absent;negative regulation of metabolic process (GO:0009892);1182;884;820.11;+;1.08;7.30E-06;7.32E-03
+proseq;promoter;absent;negative regulation of macromolecule metabolic process (GO:0010605);1089;811;755.58;+;1.07;6.66E-05;4.22E-02
+proseq;promoter;absent;regulation of transcription by RNA polymerase II (GO:0006357);1116;829;774.32;+;1.07;9.14E-05;5.00E-02
+proseq;promoter;absent;positive regulation of macromolecule metabolic process (GO:0010604);1389;1030;963.73;+;1.07;1.38E-05;1.19E-02
+proseq;promoter;absent;positive regulation of metabolic process (GO:0009893);1516;1122;1051.85;+;1.07;8.06E-06;7.46E-03
+proseq;promoter;absent;regulation of primary metabolic process (GO:0080090);2202;1625;1527.82;+;1.06;3.93E-08;2.36E-04
+proseq;promoter;absent;regulation of macromolecule biosynthetic process (GO:0010556);2110;1554;1463.99;+;1.06;2.52E-07;6.06E-04
+proseq;promoter;absent;regulation of gene expression (GO:0010468);2066;1521;1433.46;+;1.06;4.57E-07;9.18E-04
+proseq;promoter;absent;regulation of biosynthetic process (GO:0009889);2180;1604;1512.55;+;1.06;2.35E-07;7.07E-04
+proseq;promoter;absent;regulation of metabolic process (GO:0019222);2605;1916;1807.43;+;1.06;3.36E-09;4.04E-05
+proseq;promoter;absent;regulation of macromolecule metabolic process (GO:0060255);2401;1761;1665.89;+;1.06;1.38E-07;5.53E-04
+proseq;promoter;absent;regulation of nucleobase-containing compound metabolic process (GO:0019219);1696;1242;1176.74;+;1.06;6.65E-05;4.45E-02
+proseq;promoter;absent;positive regulation of biological process (GO:0048518);2448;1786;1698.50;+;1.05;1.53E-06;2.64E-03
+proseq;promoter;absent;negative regulation of cellular process (GO:0048523);2012;1466;1395.99;+;1.05;5.30E-05;3.99E-02
+proseq;promoter;absent;positive regulation of cellular process (GO:0048522);2351;1713;1631.20;+;1.05;5.50E-06;6.62E-03
+proseq;promoter;absent;negative regulation of biological process (GO:0048519);2085;1517;1446.64;+;1.05;5.59E-05;3.96E-02
+proseq;promoter;absent;response to stimulus (GO:0050896);2695;1943;1869.88;+;1.04;8.31E-05;4.76E-02
+proseq;promoter;absent;regulation of cellular process (GO:0050794);4098;2928;2843.32;+;1.03;5.67E-06;6.20E-03
+proseq;promoter;absent;regulation of biological process (GO:0050789);4216;3002;2925.20;+;1.03;3.09E-05;2.48E-02
+cageseq;enhancer;absent;alpha-beta T cell lineage commitment (GO:0002363);10;10;3.32;+;3.01;1.63E-05;1.78E-02
+cageseq;enhancer;absent;T cell lineage commitment (GO:0002360);11;11;3.66;+;3.01;5.40E-06;1.63E-02
+cageseq;enhancer;absent;CD4-positive, alpha-beta T cell lineage commitment (GO:0043373);10;10;3.32;+;3.01;1.63E-05;1.63E-02
+cageseq;enhancer;absent;CD4-positive or CD8-positive, alpha-beta T cell lineage commitment (GO:0043369);10;10;3.32;+;3.01;1.63E-05;1.51E-02
+cageseq;enhancer;absent;T-helper cell lineage commitment (GO:0002295);9;9;2.99;+;3.01;4.91E-05;2.69E-02
+cageseq;enhancer;absent;protein localization to chromatin (GO:0071168);18;15;5.98;+;2.51;1.75E-05;1.50E-02
+cageseq;enhancer;absent;regulation of ossification (GO:0030278);46;29;15.29;+;1.90;4.91E-05;2.81E-02
+cageseq;enhancer;absent;negative regulation of immune system process (GO:0002683);187;88;62.18;+;1.42;7.58E-05;3.80E-02
+cageseq;enhancer;absent;cellular response to cytokine stimulus (GO:0071345);292;128;97.09;+;1.32;1.31E-04;4.78E-02
+cageseq;enhancer;absent;negative regulation of transcription by RNA polymerase II (GO:0000122);413;176;137.32;+;1.28;5.01E-05;2.62E-02
+cageseq;enhancer;absent;negative regulation of DNA-templated transcription (GO:0045892);545;230;181.21;+;1.27;6.26E-06;1.51E-02
+cageseq;enhancer;absent;negative regulation of RNA biosynthetic process (GO:1902679);546;230;181.54;+;1.27;6.45E-06;1.29E-02
+cageseq;enhancer;absent;chromatin organization (GO:0006325);564;235;187.53;+;1.25;1.35E-05;1.81E-02
+cageseq;enhancer;absent;negative regulation of RNA metabolic process (GO:0051253);593;247;197.17;+;1.25;7.48E-06;1.29E-02
+cageseq;enhancer;absent;chromatin remodeling (GO:0006338);494;204;164.25;+;1.24;1.06E-04;4.13E-02
+cageseq;enhancer;absent;negative regulation of nucleobase-containing compound metabolic process (GO:0045934);660;269;219.45;+;1.23;2.37E-05;1.90E-02
+cageseq;enhancer;absent;negative regulation of macromolecule biosynthetic process (GO:0010558);925;361;307.56;+;1.17;7.87E-05;3.64E-02
+cageseq;enhancer;absent;positive regulation of nucleobase-containing compound metabolic process (GO:0045935);941;366;312.88;+;1.17;8.91E-05;3.70E-02
+cageseq;enhancer;absent;negative regulation of macromolecule metabolic process (GO:0010605);1089;422;362.09;+;1.17;3.36E-05;2.53E-02
+cageseq;enhancer;absent;negative regulation of metabolic process (GO:0009892);1182;454;393.01;+;1.16;4.47E-05;2.83E-02
+cageseq;enhancer;absent;positive regulation of macromolecule metabolic process (GO:0010604);1389;524;461.84;+;1.13;8.43E-05;3.76E-02
+cageseq;enhancer;absent;negative regulation of cellular process (GO:0048523);2012;754;668.98;+;1.13;1.82E-06;2.19E-02
+cageseq;enhancer;absent;regulation of nucleobase-containing compound metabolic process (GO:0019219);1696;634;563.91;+;1.12;3.47E-05;2.45E-02
+cageseq;enhancer;absent;regulation of RNA metabolic process (GO:0051252);1557;582;517.70;+;1.12;9.79E-05;3.93E-02
+cageseq;enhancer;absent;negative regulation of biological process (GO:0048519);2085;779;693.25;+;1.12;1.99E-06;1.20E-02
+cageseq;enhancer;absent;regulation of primary metabolic process (GO:0080090);2202;818;732.15;+;1.12;2.80E-06;1.12E-02
+cageseq;enhancer;absent;anatomical structure development (GO:0048856);1835;678;610.13;+;1.11;8.89E-05;3.82E-02
+cageseq;enhancer;absent;regulation of gene expression (GO:0010468);2066;760;686.94;+;1.11;4.82E-05;2.90E-02
+cageseq;enhancer;absent;regulation of macromolecule biosynthetic process (GO:0010556);2110;776;701.56;+;1.11;3.73E-05;2.49E-02
+cageseq;enhancer;absent;regulation of macromolecule metabolic process (GO:0060255);2401;880;798.32;+;1.10;1.23E-05;1.86E-02
+cageseq;enhancer;absent;regulation of metabolic process (GO:0019222);2605;948;866.15;+;1.09;1.53E-05;1.84E-02
+cageseq;enhancer;absent;positive regulation of cellular process (GO:0048522);2351;855;781.70;+;1.09;7.58E-05;3.65E-02
+cageseq;enhancer;absent;positive regulation of biological process (GO:0048518);2448;886;813.95;+;1.09;1.22E-04;4.60E-02
+cageseq;promoter;absent;branching involved in blood vessel morphogenesis (GO:0001569);10;10;3.68;+;2.72;4.50E-05;4.52E-02
+cageseq;promoter;absent;negative regulation of immune system process (GO:0002683);187;96;68.81;+;1.40;4.18E-05;4.58E-02
+cageseq;promoter;absent;negative regulation of DNA-templated transcription (GO:0045892);545;245;200.56;+;1.22;5.38E-05;4.63E-02
+cageseq;promoter;absent;negative regulation of RNA biosynthetic process (GO:1902679);546;245;200.92;+;1.22;5.53E-05;4.44E-02
+cageseq;promoter;absent;chromatin organization (GO:0006325);564;253;207.55;+;1.22;4.76E-05;4.41E-02
+cageseq;promoter;absent;negative regulation of RNA metabolic process (GO:0051253);593;264;218.22;+;1.21;5.84E-05;4.14E-02
+cageseq;promoter;absent;positive regulation of nucleobase-containing compound metabolic process (GO:0045935);941;407;346.28;+;1.18;1.21E-05;2.08E-02
+cageseq;promoter;absent;positive regulation of macromolecule metabolic process (GO:0010604);1389;581;511.14;+;1.14;1.63E-05;2.45E-02
+cageseq;promoter;absent;negative regulation of cellular process (GO:0048523);2012;827;740.40;+;1.12;2.08E-06;1.25E-02
+cageseq;promoter;absent;regulation of nucleobase-containing compound metabolic process (GO:0019219);1696;697;624.12;+;1.12;2.46E-05;2.96E-02
+cageseq;promoter;absent;negative regulation of biological process (GO:0048519);2085;856;767.27;+;1.12;1.53E-06;1.84E-02
+cageseq;promoter;absent;regulation of primary metabolic process (GO:0080090);2202;899;810.32;+;1.11;2.16E-06;8.67E-03
+cageseq;promoter;absent;positive regulation of cellular process (GO:0048522);2351;950;865.15;+;1.10;7.63E-06;1.53E-02
+cageseq;promoter;absent;regulation of macromolecule metabolic process (GO:0060255);2401;969;883.55;+;1.10;7.44E-06;1.79E-02
+cageseq;promoter;absent;regulation of macromolecule biosynthetic process (GO:0010556);2110;851;776.47;+;1.10;5.60E-05;4.22E-02
+cageseq;promoter;absent;regulation of gene expression (GO:0010468);2066;833;760.27;+;1.10;7.22E-05;4.83E-02
+cageseq;promoter;absent;regulation of metabolic process (GO:0019222);2605;1048;958.62;+;1.09;3.97E-06;1.19E-02
+cageseq;promoter;absent;positive regulation of biological process (GO:0048518);2448;982;900.85;+;1.09;2.38E-05;3.19E-02

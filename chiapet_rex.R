@@ -6,7 +6,7 @@ library(dplyr); library(ggplot2); library(tidyr);
 library(stringr); library(data.table); library(gridExtra); library(grid)
 
 # Open REX BED file
-rex <- read.delim("~/Documents/Vihervaara/hg19/hg19_rex_bed/rex_new.bed", header=FALSE)
+rex <- read.delim("~/Documents/Vihervaara/hg19/hg19_chr/rex_new.bed", header=FALSE)
 colnames(rex) <- c("chr", "rexStart", "rexEnd")
 rex$rexMid <- rowMeans(rex[, c("rexStart", "rexEnd")], na.rm = TRUE)
 
@@ -89,56 +89,38 @@ chiapet_connections <- rbind(PRO_HS_connections, eClusters_connections,
                              PRO_hemin_connections_24h, PRO_hemin_connections_48h)
 
 # HEMIN Histogram Plot
-ggplot(chiapet_filtered, aes(x = log10(distance))) + 
-  geom_histogram(binwidth = 0.1, position = "dodge") +
-  labs(title = "Distance by Sequencing Method and Hemin Treatment",
-       x = "log10(Promoter-Enhancer Distance)", 
-       y = "Count") +
-  theme_minimal() +
+chiapet_connections %>%
+  filter(hemin %in% c("0min", "15min", "30min", "60min", "24h", "48h")) %>%
+  mutate(hemin = factor(hemin, levels = c("0min", "15min", "30min", "60min", "24h", "48h"))) %>%
+  ggplot(aes(x = log10(distance))) +
+  geom_histogram(binwidth = 0.1) +
   facet_grid(seq ~ hemin) +
-  theme(legend.position = "none") +
-  geom_text(data = chiapet_filtered %>% group_by(seq, hemin) %>% summarise(n = n(), .groups = "drop"), aes(x = Inf, y = Inf, label = paste("n =", n)), 
-            inherit.aes = FALSE, hjust = 1.1, vjust = 1.5)
+  geom_text(data = ~ .x %>% count(seq, hemin, name = "n"),
+            aes(x = Inf, y = Inf, label = paste("n =", n)),
+            inherit.aes = FALSE, hjust = 1.1, vjust = 1.5) +
+  labs(x = "log10(Promoter-Enhancer Distance)", y = "Count") +
+  theme_minimal() +
+  theme(legend.position = "none")
 
 # eClusters and HS histogram plot
-# Calculate the total count for each 'features_category'
-count_labels <- chiapet_connections %>%
+data <- chiapet_connections %>%
   filter(grepl("eClusters|heatshock", hemin)) %>%
   mutate(features_category = factor(case_when(
     grepl("Nhs", feature) ~ "Nhs",
     grepl("HS", feature) ~ "HS",
     grepl("both", feature) ~ "both",
-    TRUE ~ "enhancer clusters"  # Change "Other" to "enhancer clusters"
-  ), levels = c("Nhs", "HS", "both", "enhancer clusters"))) %>%
-  group_by(features_category) %>%
-  summarise(n = n()) %>%
-  ungroup() %>%
-  mutate(label = paste0("n = ", n))  # Prepare the label with the count
+    TRUE ~ "enhancer clusters"
+  ), levels = c("Nhs", "HS", "both", "enhancer clusters")))
 
-# Plot the graph with the 'n' label for each facet
-ggplot(chiapet_connections %>% 
-         filter(grepl("eClusters|heatshock", hemin)) %>%
-         mutate(features_category = factor(case_when(
-           grepl("Nhs", feature) ~ "Nhs",
-           grepl("HS", feature) ~ "HS",
-           grepl("both", feature) ~ "both",
-           TRUE ~ "enhancer clusters"  # Change "Other" to "enhancer clusters"
-         ), levels = c("Nhs", "HS", "both", "enhancer clusters"))), 
-       aes(x = log10(distance))) + 
-  geom_histogram(binwidth = 0.1, position = "dodge") +  # Adjusted binwidth for more bins
-  labs(
-    title = "Distance by Sequencing Method and Data Set",
-    x = "log10(Promoter-Enhancer Distance)", 
-    y = "Count"
-  ) +
-  theme_minimal() +
-  facet_wrap(~features_category, nrow = 1) +  # Split by the new 'features_category' variable
-  theme(legend.position = "none") +  # Remove the legend
-  geom_text(
-    data = count_labels, 
-    aes(x = Inf, y = Inf, label = label), 
-    hjust = 1.1, vjust = 1.1, inherit.aes = FALSE  # Position the label in the upper-right corner
-  )
+ggplot(data, aes(x = log10(distance))) +
+  geom_histogram(binwidth = 0.1) +
+  facet_wrap(~features_category, nrow = 1) +
+  geom_text(data = count(data, features_category) %>% 
+              mutate(label = paste0("n = ", n)), 
+            aes(x = Inf, y = Inf, label = label), 
+            inherit.aes = FALSE, hjust = 1.1, vjust = 1.1) +
+  labs(x = "log10(Promoter-Enhancer Distance)", y = "Count") +
+  theme_minimal(base_size = 10) + theme(legend.position = "none")
 
 # Convert to data.table
 chiapet_connections <- as.data.table(chiapet_connections)
@@ -171,36 +153,20 @@ chiapet_connections[, c("promoter_REX", "promoter_density") :=
 ## STATISTICS
 
 # Mean REX density in regions compared to the value expected by chance
-# Expected number of REX motifs by chance = 0.0009765625
+# Expected number of REX motifs by chance = 0.00073242187
+# Observed REX density genome-wide = 0.00101932746
 
-mean(chiapet_connections$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
+mean((chiapet_connections %>% filter(seq == "proseq"))$enhancer_density) / 0.00073242187
+mean((chiapet_connections %>% filter(seq == "cageseq"))$enhancer_density) / 0.00073242187
+mean((chiapet_connections %>% filter(seq == "proseq"))$promoter_density) / 0.00073242187 
+mean((chiapet_connections %>% filter(seq == "cageseq"))$promoter_density) / 0.00073242187 
+mean((chiapet_connections %>% filter(hemin == "eClusters"))$enhancer_density) / 0.00073242187 
 
-mean((chiapet_connections %>% filter(hemin == "0min", seq == "proseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "15min", seq == "proseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "30min", seq == "proseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "60min", seq == "proseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "24h", seq == "proseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "48h", seq == "proseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "0min", seq == "cageseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "15min", seq == "cageseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "30min", seq == "cageseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "60min", seq == "cageseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "24h", seq == "cageseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "48h", seq == "cageseq"))$enhancer_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "0min", seq == "proseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "15min", seq == "proseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "30min", seq == "proseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "60min", seq == "proseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "24h", seq == "proseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "48h", seq == "proseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "0min", seq == "cageseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "15min", seq == "cageseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "30min", seq == "cageseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "60min", seq == "cageseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "24h", seq == "cageseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "48h", seq == "cageseq"))$promoter_density) / 0.0009765625 # 67 % of what would be expected by chance
-mean(chiapet_connections$promoter_density) / 0.0009765625 # 31 % of what would be expected by chance
-mean((chiapet_connections %>% filter(hemin == "eClusters"))$enhancer_density) / 0.0009765625 # 82 % of what would be expected by chance
+mean((chiapet_connections %>% filter(seq == "proseq"))$enhancer_density) / 0.00101932746
+mean((chiapet_connections %>% filter(seq == "cageseq"))$enhancer_density) / 0.00101932746
+mean((chiapet_connections %>% filter(seq == "proseq"))$promoter_density) / 0.00101932746 
+mean((chiapet_connections %>% filter(seq == "cageseq"))$promoter_density) / 0.00101932746 
+mean((chiapet_connections %>% filter(hemin == "eClusters"))$enhancer_density) / 0.00101932746 
 
 # Correlation between REX density and DISTANCE
 
@@ -230,8 +196,7 @@ ggplot(chiapet_connections %>%
        aes(x = enhancer_density, y = log10(distance))) +
   geom_point() +  # Scatter points
   geom_smooth(method = "lm", se = TRUE, color = "grey30") +  # Linear regression line
-  labs(title = "Distance vs Enhancer REX-motif Density",
-       x = "Enhancer REX-motif Density",
+  labs(x = "Enhancer REX-motif Density",
        y = "log10(Distance)") +
   facet_grid(seq ~ hemin) +  # Facet by seq (rows) and hemin (columns)
   theme_minimal() +
@@ -266,8 +231,7 @@ ggplot(chiapet_connections %>%
        aes(x = promoter_density, y = log10(distance))) +
   geom_point(alpha = 0.5) +  # Scatter points
   geom_smooth(method = "lm", se = TRUE, color = "grey30") +  # Linear regression line
-  labs(title = "Distance vs Promoter Density",
-       x = "Promoter Density",
+  labs(x = "Promoter Density",
        y = "log10(Distance)") +
   facet_grid(seq ~ hemin) +  # Facet by seq (rows) and hemin (columns)
   theme_minimal() +
@@ -313,13 +277,9 @@ ggplot(chiapet_connections_combined, aes(x = enhancer_density, y = log10(distanc
     data = stats, 
     aes(x = Inf, y = Inf, label = label),
     inherit.aes = FALSE,
-    hjust = 1.1, vjust = 1.1
-  ) +
-  labs(
-    title = "Promoter-Enhancer Distance vs REX Enhancer Density",
-    x = "Enhancer REX-motif Density",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
+    hjust = 1.1, vjust = 1.1) +
+  labs(x = "Enhancer REX-motif Density", 
+       y = "log10(Promoter-Enhancer Distance)") +
   facet_wrap(~ group, nrow = 1) +
   theme_minimal()
 
@@ -362,10 +322,8 @@ ggplot(chiapet_connections_combined, aes(x = promoter_density, y = log10(distanc
     inherit.aes = FALSE,
     hjust = 1.1, vjust = 1.1
   ) +
-  labs(
-    title = "Promoter-Enhancer Distance vs REX Promoter Density",
-    x = "Promoter REX-motif Density",
-    y = "log10(Promoter-Enhancer Distance)"
+  labs(x = "Promoter REX-motif Density", 
+       y = "log10(Promoter-Enhancer Distance)"
   ) +
   facet_wrap(~ group, nrow = 1) +
   theme_minimal()
@@ -374,170 +332,51 @@ ggplot(chiapet_connections_combined, aes(x = promoter_density, y = log10(distanc
 
 ## REX motif ABSENCE or PRESENCE comparison
 
-# REX ABSENCE or PRESENCE in ENHANCERS, for HEMIN CAGE SEQ DATA
-plot1 <- ggplot(chiapet_connections %>%
-         filter(seq == "cageseq") %>%
-         mutate(REX_presence = ifelse(enhancer_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
+# Process, reshape, compute p-values, and plot in a streamlined pipeline
+plot <- chiapet_connections %>%
+  mutate(
+    condition = case_when(
+      seq == "cageseq" ~ "CAGE-seq",
+      seq == "proseq" & !grepl("Nhs|HS|both", feature) & hemin != "eClusters" ~ "PRO-seq Hemin",
+      feature %in% c("both", "Nhs", "HS") ~ "PRO-seq HS",
+      hemin == "eClusters" ~ "eClusters",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(condition)) %>%
+  pivot_longer(c(enhancer_REX, promoter_REX), names_to = "REX_location", values_to = "REX_value") %>%
+  mutate(
+    REX_presence = ifelse(REX_value == 0, "Absent", "Present"),
+    REX_location = recode(REX_location, enhancer_REX = "Enhancer", promoter_REX = "Promoter"),
+    log_distance = log10(distance)
+  ) -> processed_data
+
+# Compute p-values
+p_values_df <- processed_data %>%
+  group_by(condition, REX_location) %>%
+  summarise(
+    p_value = t.test(log_distance ~ REX_presence)$p.value,
+    y_pos = max(log_distance, na.rm = TRUE) * 0.95,
+    .groups = 'drop'
+  )
+
+# Generate plot
+ggplot(processed_data, aes(x = REX_presence, y = log_distance)) +
   geom_violin(trim = FALSE) +
   geom_boxplot(width = 0.1, outlier.shape = NA) +
+  facet_grid(REX_location ~ condition) +
+  geom_text(data = p_values_df,
+            aes(x = 1.5, y = y_pos,
+                label = paste0("p = ", format.pval(p_value, digits = 3, eps = .001))),
+            inherit.aes = FALSE, size = 5) +
   labs(
-    title = "Hemin, CAGE-seq",
-    x = "REX Motif in Enhancer",
+    x = "REX Motif in Element",
     y = "log10(Promoter-Enhancer Distance)"
   ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", format.pval(t.test(log10(distance) ~ ifelse(enhancer_REX == 0, 'Absent', 'Present'), 
-                                                     data = chiapet_connections %>% filter(seq == "cageseq"))$p.value, 
-                                              digits = 3, eps = .001)), size = 5)
+  theme_minimal(base_size = 14)
 
-# REX ABSENCE or PRESENCE in ENHANCERS, for HEMIN PRO SEQ DATA
-plot2 <- ggplot(chiapet_connections %>%
-         filter(seq == "proseq") %>%
-         filter(!grepl("Nhs|HS|both", feature) & hemin != "eClusters") %>%
-         mutate(REX_presence = ifelse(enhancer_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "Hemin, PRO-seq",
-    x = "REX Motif in Enhancer",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", 
-                          format.pval(t.test(log10(distance) ~ ifelse(enhancer_REX == 0, "Absent", "Present"),
-                                             data = chiapet_connections %>% filter(seq == "proseq") %>%
-                                               filter(!grepl("Nhs|HS|both", feature) & hemin != "eClusters"))$p.value, 
-                                      digits = 3, eps = .001)), size = 5)
+#################
 
-# REX ABSENCE or PRESENCE in PROMOTERS, for HEMIN CAGE SEQ DATA
-plot3 <- ggplot(chiapet_connections %>%
-         filter(seq == "cageseq") %>%
-         mutate(REX_presence = ifelse(promoter_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "Hemin, CAGE-seq",
-    x = "REX Motif in Promoter",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", format.pval(t.test(log10(distance) ~ ifelse(promoter_REX == 0, 'Absent', 'Present'), 
-                                                     data = chiapet_connections %>% filter(seq == "cageseq"))$p.value, 
-                                              digits = 3, eps = .001)), size = 5)
-
-# REX ABSENCE or PRESENCE in PROMOTERS, for HEMIN PRO SEQ DATA
-plot4 <- ggplot(chiapet_connections %>%
-         filter(seq == "proseq") %>%
-         filter(!grepl("Nhs|HS|both", feature) & hemin != "eClusters") %>%
-         mutate(REX_presence = ifelse(promoter_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "Hemin, PRO-seq",
-    x = "REX Motif in Promoter",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", 
-                          format.pval(t.test(log10(distance) ~ ifelse(promoter_REX == 0, "Absent", "Present"),
-                                             data = chiapet_connections %>% filter(seq == "proseq") %>%
-                                               filter(!grepl("Nhs|HS|both", feature) & hemin != "eClusters"))$p.value, 
-                                      digits = 3, eps = .001)), size = 5)
-
-# REX ABSENCE or PRESENCE in ENHANCERS, for HEAT SHOCK DATA
-plot5 <- ggplot(chiapet_connections %>%
-         filter(feature %in% c("both", "Nhs", "HS")) %>%
-         mutate(REX_presence = ifelse(enhancer_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "Heat shock",
-    x = "REX Motif in Enhancer",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", 
-                          format.pval(t.test(log10(distance) ~ ifelse(enhancer_REX == 0, "Absent", "Present"),
-                                             data = chiapet_connections %>% filter(feature %in% c("both", "Nhs", "HS")))$p.value, 
-                                      digits = 3, eps = .001)), size = 5)
-
-# REX ABSENCE or PRESENCE in PROMOTERS, for HEAT SHOCK DATA
-plot6 <- ggplot(chiapet_connections %>%
-         filter(feature %in% c("both", "Nhs", "HS")) %>%
-         mutate(REX_presence = ifelse(promoter_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "Heat shock",
-    x = "REX Motif in Promoter",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", 
-                          format.pval(t.test(log10(distance) ~ ifelse(promoter_REX == 0, "Absent", "Present"),
-                                             data = chiapet_connections %>% filter(feature %in% c("both", "Nhs", "HS")))$p.value, 
-                                      digits = 3, eps = .001)), size = 5)
-
-# REX ABSENCE or PRESENCE in ENHANCERS, for ENHANCER CLUSTER DATA
-plot7 <- ggplot(chiapet_connections %>%
-         filter(hemin == "eClusters") %>%
-         mutate(REX_presence = ifelse(enhancer_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "eClusters",
-    x = "REX Motif in Enhancer Cluster",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", 
-                          format.pval(t.test(log10(distance) ~ ifelse(enhancer_REX == 0, "Absent", "Present"),
-                                             data = chiapet_connections %>% filter(hemin == "eClusters"))$p.value, 
-                                      digits = 3, eps = .001)), size = 5)
-
-# REX ABSENCE or PRESENCE in PROMOTERS, for ENHANCER CLUSTER DATA
-plot8 <- ggplot(chiapet_connections %>%
-         filter(hemin == "eClusters") %>%
-         mutate(REX_presence = ifelse(promoter_REX == 0, "Absent", "Present")), 
-       aes(x = REX_presence, y = log10(distance))) +
-  geom_violin(trim = FALSE) +
-  geom_boxplot(width = 0.1, outlier.shape = NA) +
-  labs(
-    title = "eClusters",
-    x = "REX Motif in Promoter",
-    y = "log10(Promoter-Enhancer Distance)"
-  ) +
-  theme_classic() +
-  annotate("text", 
-           x = 1.5, y = max(log10(chiapet_connections$distance), na.rm = TRUE) * 0.95, 
-           label = paste0("p = ", 
-                          format.pval(t.test(log10(distance) ~ ifelse(promoter_REX == 0, "Absent", "Present"),
-                                             data = chiapet_connections %>% filter(hemin == "eClusters"))$p.value, 
-                                      digits = 3, eps = .001)), size = 5)
-
-# Arrange the two plots side by side
-grid.arrange(plot1, plot3, plot2, plot4, plot5, plot6, plot7, plot8, nrow = 2)
 
 ### Write datasets to csv files to be used for GO enrichment
 
@@ -568,8 +407,12 @@ for (name in names(rex_filters)) {
   filter_base <- rex_filters[[name]]
   for (region in c("enhancer", "promoter")) {
     for (rex in c("absent", "present")) {
-      rex_expr <- if (rex == "absent") 0 else quote(`!=`(0))
-      full_expr <- rlang::expr((!!filter_base) & (!!rlang::sym(paste0(region, "_REX")) == !!rex_expr))
+      rex_expr <- if (rex == "absent") {
+        rlang::expr(!!rlang::sym(paste0(region, "_REX")) == 0)
+      } else {
+        rlang::expr(!!rlang::sym(paste0(region, "_REX")) != 0)
+      }
+      full_expr <- rlang::expr((!!filter_base) & (!!rex_expr))
       fname <- paste0("~/Desktop/", name, "_", region, "_REX_", rex, "_genes.csv")
       write_genes(!!full_expr, fname)
     }

@@ -29,7 +29,7 @@ filtered_sample_library$biol_rep <- as.numeric(str_extract(filtered_sample_libra
 filtered_sample_library$hemin <- sub(".*hemin,\\s*([^,]+),.*", "\\1", filtered_sample_library$V1)
 filtered_sample_library$hemin <- ifelse(grepl("hemin,\\s*[^,]+,", filtered_sample_library$V1), filtered_sample_library$hemin, NA)
 
-# Filter out timepoints also found in PROseq data
+# Select timepoints also found in PROseq data
 filtered_sample_library <- filtered_sample_library %>%
   filter(hemin %in% c(NA, "00hr00min", "00hr15min", "00hr30min", "01hr00min", 
                       "24hr", "day02") | is.na(hemin))
@@ -55,9 +55,9 @@ CAGE_coordinates <- rownames(selected_count_matrix) %>%
 
 # Calculate RPK (Reads Per Kilobase)
 CAGE_RPK <- selected_count_matrix %>%
-  mutate(length = CAGE_coordinates$eEnd - CAGE_coordinates$eStart) %>%
-  mutate(across(everything(), ~ (. / length))) %>%
-  select(-length)  # Remove length after normalization
+  mutate(length_kb = (CAGE_coordinates$eEnd - CAGE_coordinates$eStart) / 1000) %>%
+  mutate(across(where(is.numeric), ~ (. / length_kb))) %>%
+  select(-length_kb)
 
 # Compute mean RPK for time points
 time_points <- list(
@@ -77,6 +77,9 @@ CAGE_RPK <- cbind(CAGE_coordinates, CAGE_RPK)
 
 # Remove unnecessary columns (adjust indices if needed)
 CAGE_RPK <- CAGE_RPK[, -c(4:25)]
+
+# Remove rows with only RPK 0s
+CAGE_RPK <- CAGE_RPK[!(CAGE_RPK$min_0_mean_RPK == 0 & CAGE_RPK$min_15_mean_RPK == 0 & CAGE_RPK$min_30_mean_RPK == 0 & CAGE_RPK$min_60_mean_RPK == 0 & CAGE_RPK$hr_24_mean_RPK == 0 & CAGE_RPK$hr_48_mean_RPK == 0), ]
 
 # Export final matrix
 write.table(CAGE_RPK, RPK_matrix_out_path, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = ",")
