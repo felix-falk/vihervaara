@@ -5,73 +5,61 @@
 
 # Run in terminal as: Rscript refseq_promoters_script.R refseq.txt refseqpromoters.bed
 
-# In the refseq file: 
-# Column 3 represents the chromosome
-# Column 4 represents strandness
-# Column 5 represents the first nucleotide - 1 postion for + strand genes
-# Column 6 represents the first nucleotide of - strand genes
-# Column 13 represents the gene name
+# Get command-line arguments
+args <- commandArgs(trailingOnly = TRUE) 
 
-args <- commandArgs(trailingOnly = TRUE) # Get command-line arguments
-
+# Check if the correct number of arguments is provided
 if (length(args) < 1) {
   stop("Please provide a filename as an argument.")
-} # Check if the correct number of arguments is provided
+} 
 
-RefSeqFilepath <- args[1] # refseq curated filepath ("~/Documents/Vihervaara/hg19/ncbiRefSeqCuratedhg19.txt")
-
-RefSeqPromotersFilepath <- args[2] # promoters calculated from refseq filepath ("~/Documents/Vihervaara/hg19/refSeqPromoters.bed")
+# Import file paths
+RefSeqFilepath <- args[1]
+RefSeqPromotersFilepath <- args[2]
 
 #RefSeqFilepath = "~/Documents/Vihervaara/hg19/ncbiRefSeqCuratedhg19.txt"
 #RefSeqPromotersFilepath = "~/Documents/Vihervaara/hg19/refSeqPromoters.bed"
 
+# Load required libraries
 library(dplyr)
 library(tidyverse)
 library(stringr)
 
-refSeq <- read.delim(RefSeqFilepath, 
-                     header=FALSE) # Import the hg19 RefSeq select genome file
+# Import the RefSeq select genome file
+refSeq <- read.delim(RefSeqFilepath, header=FALSE) 
 
-refSeq <- refSeq[, c(3, 4, 5, 6, 13)] # Pick out relevant columns
+# Keep relevant columns
+refSeq <- refSeq[, c(3, 4, 5, 6, 13)] 
 
-# refSeq <- refSeq %>% select(, c(1, 2, 3, 4, 5))
+# Create "+" strand refseq data frame
+refSeqPlus <- refSeq %>% filter(V4 == "+") 
 
-refSeqPlus <- refSeq %>% filter(V4 == "+") # Create "+" strand refseq data frame
+# Create "-" strand refseq data frame
+refSeqMinus <- refSeq %>% filter(V4 == "-") 
 
-refSeqMinus <- refSeq %>% filter(V4 == "-") # Create "-" strand refseq data frame
+# Calculate "+" strand promoter coordinates
+refSeqPlus <- refSeqPlus %>% mutate(promoterStart = V5 - 100, promoterEnd = V5) 
 
-refSeqPlus <- refSeqPlus %>% 
-  mutate(promoterStart = V5 - 100, 
-         promoterEnd = V5) # Calculate "+" strand promoter coordinates
+# Calculate "-" strand promoter coordinates
+refSeqMinus <- refSeqMinus %>% mutate(promoterStart = V6 + 1, promoterEnd = V6 + 101) 
 
-refSeqMinus <- refSeqMinus %>% 
-  mutate(promoterStart = V6 + 1, 
-         promoterEnd = V6 + 101) # Calculate "-" strand promoter coordinates
+# Join back into one data frame
+refSeqPromoters <- rbind(refSeqPlus, refSeqMinus) 
 
-refSeqPromoters <- rbind(refSeqPlus, 
-                         refSeqMinus) # Join back into one data frame
-
+# Create list of 0s for .bed file formatting
 zeros <- rep(0, nrow(refSeqPromoters))
+refSeqPromoters$zeros <- zeros 
 
-refSeqPromoters$zeros <- zeros # Create list of 0s for BED-file formatting
+# Create refSeqPromoters dataframe in BED-format
+refSeqPromoters <- refSeqPromoters[, c("V3", "promoterStart", "promoterEnd", 
+                                       "V13", "zeros", "V4")] 
 
-refSeqPromoters <- refSeqPromoters[
-  , c("V3", 
-      "promoterStart", 
-      "promoterEnd", 
-      "V13", 
-      "zeros", 
-      "V4")] # Create refSeqPromoters dataframe in BED-format
+# Remove RefSeq "fix" items 
+refSeqPromoters <- refSeqPromoters[!grepl("fix", refSeqPromoters$V3), ] 
 
-refSeqPromoters <- refSeqPromoters[
-  !grepl("fix", refSeqPromoters$V3), ] # Remove RefSeq "fix" items 
+# Remove RefSeq "alt" items 
+refSeqPromoters <- refSeqPromoters[!grepl("alt", refSeqPromoters$V3), ] 
 
-refSeqPromoters <- refSeqPromoters[
-  !grepl("alt", refSeqPromoters$V3), ] # Remove RefSeq "alt" items 
-
-write.table(refSeqPromoters, 
-            RefSeqPromotersFilepath, 
-            quote = FALSE, 
-            row.names = FALSE, 
-            col.names = FALSE, 
-            sep = "\t") # Export refseq promoters BED-file
+# Export refseq promoters .bed file
+write.table(refSeqPromoters, RefSeqPromotersFilepath, quote = FALSE, 
+            row.names = FALSE, col.names = FALSE, sep = "\t") 

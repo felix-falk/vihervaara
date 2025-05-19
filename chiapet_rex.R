@@ -143,7 +143,7 @@ count_density <- function(chr, start, end) {
   return(c(count, count / len))
 }
 
-# Vectorized apply for enhancer, promoter, cluster, within
+# Vectorized apply for enhancer, promoter, cluster
 chiapet_connections[, c("enhancer_REX", "enhancer_density") := 
      transpose(mapply(count_density, chr, eStart, eEnd, SIMPLIFY = FALSE))]
 
@@ -418,3 +418,19 @@ for (name in names(rex_filters)) {
     }
   }
 }
+
+# Export gene lists for top 5000 RPK connections
+write.table(CAGE_hemin_connections_0min %>% arrange(desc(feature)) %>% slice_head(n = 3000) %>% pull(gene), file = "CAGE_0min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(CAGE_hemin_connections_15min %>% arrange(desc(feature)) %>% slice_head(n = 3000) %>% pull(gene), file = "CAGE_15min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(CAGE_hemin_connections_30min %>% arrange(desc(feature)) %>% slice_head(n = 3000) %>% pull(gene), file = "CAGE_30min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(CAGE_hemin_connections_60min %>% arrange(desc(feature)) %>% slice_head(n = 3000) %>% pull(gene), file = "CAGE_60min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(CAGE_hemin_connections_24h %>% arrange(desc(feature)) %>% slice_head(n = 3000) %>% pull(gene), file = "CAGE_24h_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(CAGE_hemin_connections_48h %>% arrange(desc(feature)) %>% slice_head(n = 3000) %>% pull(gene), file = "CAGE_48h_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+
+write.table(PRO_hemin_connections_0min %>% arrange(desc(feature)) %>% slice_head(n = 10000) %>% pull(gene), file = "PRO_0min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(PRO_hemin_connections_15min %>% arrange(desc(feature)) %>% slice_head(n = 10000) %>% pull(gene), file = "PRO_15min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(PRO_hemin_connections_30min %>% arrange(desc(feature)) %>% slice_head(n = 10000) %>% pull(gene), file = "PRO_30min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(PRO_hemin_connections_60min %>% arrange(desc(feature)) %>% slice_head(n = 10000) %>% pull(gene), file = "PRO_60min_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(PRO_hemin_connections_24h %>% arrange(desc(feature)) %>% slice_head(n = 10000) %>% pull(gene), file = "PRO_24h_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+write.table(PRO_hemin_connections_48h %>% arrange(desc(feature)) %>% slice_head(n = 10000) %>% pull(gene), file = "PRO_48h_gene_list.txt", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = ",")
+

@@ -1,10 +1,8 @@
-#!/usr/bin/env Rscript
-
-# CHIAPET Consolidator II
-# Consolidates two chiapet connection files, the pro-en and en-pro files into one
+# CHIAPET consolidator R script
+# Consolidates two chiapet connection .bed files, the pro-en and en-pro files, into one
 
 # Run in BASH like so: 
-# Rscript ~/Documents/Vihervaara/vihervaara_scripts/ChIAPET_consolidator_II.R ~/Documents/Vihervaara/hg19/chiapet/lEn_rPro_ChIAPET.bed ~/Documents/Vihervaara/hg19/chiapet/lPro_rEn_ChIAPET.bed ~/Documents/Vihervaara/hg19/chiapet/PRO_HS_connections.bed
+# Rscript ~/Documents/Vihervaara/vihervaara_scripts/chiapet_consolidator.R ~/Documents/Vihervaara/hg19/chiapet/lEn_rPro_ChIAPET.bed ~/Documents/Vihervaara/hg19/chiapet/lPro_rEn_ChIAPET.bed ~/Documents/Vihervaara/hg19/chiapet/PRO_HS_connections.bed
 
 # Load required library
 library(dplyr)
@@ -12,7 +10,7 @@ library(dplyr)
 # Parse command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 
-# Check if correct number of arguments is provided
+# Check number of arguments
 if (length(args) != 3) {
   stop("Please provide 3 arguments: input file 1, input file 2, and output file path")
 }
@@ -21,7 +19,6 @@ if (length(args) != 3) {
 lEnhancer_filepath <- args[1]
 rEnhancer_filepath <- args[2]
 output_path <- args[3]
-
 
 # Read the files
 lEnhancer <- read.delim(lEnhancer_filepath, header = FALSE)
@@ -48,7 +45,6 @@ rEnhancer <- rEnhancer %>%
 # Combine the two datasets
 merged <- rbind(lEnhancer, rEnhancer)
 
-# Write the merged result to the output file
-write.table(merged, output_path, quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")
-
-cat("Merge complete! Output written to: ", output_path, "\n")
+# Export data frame to .bed file
+write.table(merged, output_path, quote = FALSE, row.names = FALSE, 
+            col.names = FALSE, sep = "\t")

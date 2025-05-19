@@ -1,18 +1,20 @@
 # GO-enrichment results
 
+# Import libraries
 library(ggplot2)
 library(dplyr)
 
 # Load GO data
 GO_results <- read.csv("~/Documents/GitHub/vihervaara/thesis_datasets/go_per_treatment_results.csv", sep=";")
 
+# Rename columns
 colnames(GO_results) <- c("name", "GO_biological_process_complete", 
                                      "A", "B", "expected", "over_under", 
                                      "foldenrichment", "raw_p_value", "FDR", 
                                      "hemin", "sequencing_method")
 GO_results <- GO_results %>% filter(!grepl("heatshock", hemin))
 
-# Plot PRO-seq Hemin 
+# Plot figure, export to .tiff
 tiff("~/Documents/vihervaara/goterms_pro_figure.tiff", units="in", width=13, height=5, res=600)
 GO_results %>%
   filter(grepl("proseq", sequencing_method)) %>%
@@ -31,7 +33,7 @@ GO_results %>%
   ylab(NULL)
 dev.off()
 
-# Plot CAGE-seq Hemin
+# Plot figure, export to .tiff
 tiff("~/Documents/vihervaara/goterms_cage_figure.tiff", units="in", width=13, height=8, res=600)
 GO_results %>%
   filter(grepl("cageseq", sequencing_method)) %>%
@@ -53,6 +55,7 @@ dev.off()
 # Load REX absence / presence GO data
 GO_results_absence_presence <- read.csv("~/Documents/GitHub/vihervaara/thesis_datasets/go_rex_presence_absence_results.csv", sep=";")
 
+# Plot figure, export to .tiff
 tiff("~/Documents/vihervaara/goterms_pro_absence_figure.tiff", units="in", width=10, height=5, res=600)
 ggplot(GO_results_absence_presence %>% filter(grepl("proseq", seq)), aes(x = foldenrichment, 
                                                                       y = reorder(GObiologicalprocesscomplete, foldenrichment), 
@@ -68,6 +71,9 @@ ggplot(GO_results_absence_presence %>% filter(grepl("proseq", seq)), aes(x = fol
   ylab(NULL)
 dev.off()
 
+
+
+# Plot figure, export to .tiff
 tiff("~/Documents/vihervaara/goterms_cage_absence_figure.tiff", units="in", width=10, height=5, res=600)
 ggplot(GO_results_absence_presence %>% filter(grepl("cageseq", seq)), aes(x = foldenrichment, 
                                                                          y = reorder(GObiologicalprocesscomplete, foldenrichment), 

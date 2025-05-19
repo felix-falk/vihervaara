@@ -1,7 +1,7 @@
 ## ChIA-PET Filtering script
 
-# This R script returns the left-hand and right-hand ChIA-PET connection regions
-# from a BED file as two BED files. 
+# This R script returns the left-hand and right-hand ChIA-PET anchor regions
+# from a .bed file as two .bed files. 
 
 # Run in terminal as: 
 # Rscript ~/Documents/Vihervaara/vihervaara_scripts/chia_pet_script.R ~/Documents/Vihervaara/hg19/chiapet/ChIAPET_dTREd_to_Pol2blocks_allConn_iu_indivReducedToUniqueConnections_TCDinRed_d2dBlac_d2nTinBrOrange_nTnTgreenish.sorted.bed ~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.bed ~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed
@@ -18,20 +18,23 @@ lefthandfilepath <- args[2] # "~/Documents/Vihervaara/hg19/chiapet/ChIAPETLeft.b
 
 righthandfilepath <- args[3] # "~/Documents/Vihervaara/hg19/chiapet/ChIAPETRight.bed"
 
+# Load required packages
 library(dplyr)
 library(tidyverse)
-library(stringr) # Load required packages
+library(stringr) 
 
-ChIAPET <- read.delim(chiapetfilepath, header=FALSE) # Import the ChIA-PET file
+# Import the ChIA-PET file
+ChIAPET <- read.delim(chiapetfilepath, header=FALSE) 
 
 # Create a list of unique names, as long as the ChIA-PET file
 uniqueNames <- paste("Name", seq(1, nrow(ChIAPET)), sep = "_")
 
-ChIAPET$uniqueNames <- uniqueNames # Add the unique names as a new column in the data frame
+# Add the unique names as a new column in the data frame
+ChIAPET$uniqueNames <- uniqueNames 
 
-# Column 2 is the start of the leftmost connection
-# Column 3 is the end of the rightmost connection
-# Column 4 contains the start and end coordinates of both connections
+# Column 2 is the start of the leftmost anchor
+# Column 3 is the end of the rightmost anchor
+# Column 4 contains the start and end coordinates of both anchors
 
 # Segregate out column 4
 
@@ -43,13 +46,17 @@ ChIAPET <- ChIAPET %>%
     V4afterDash = str_split(V4, "-", simplify = TRUE)[, 2]
     )
 
-ChIAPET <- ChIAPET %>% filter(sub(":.*", "", V4beforeDash) == sub(":.*", "", V4afterDash)) # Filter out all interchromosomal connections
+# Filter out all interchromosomal connections
+ChIAPET <- ChIAPET %>% filter(sub(":.*", "", V4beforeDash) == sub(":.*", "", V4afterDash)) 
 
-ChIAPET$V4beforeDash <- sub("^[^:]+:", "", ChIAPET$V4beforeDash) # Remove beginning of V4beforeDash string
+# Remove beginning of V4beforeDash string
+ChIAPET$V4beforeDash <- sub("^[^:]+:", "", ChIAPET$V4beforeDash) 
 
-ChIAPET$V4afterDash <- sub("^[^:]+:", "", ChIAPET$V4afterDash) # Remove beginning of V4afterDash string
+# Remove beginning of V4afterDash string
+ChIAPET$V4afterDash <- sub("^[^:]+:", "", ChIAPET$V4afterDash) 
 
-ChIAPET$V4afterDash <- sub(",.*$", "", ChIAPET$V4afterDash) # Remove the end of V4afterDash string
+# Remove the end of V4afterDash string
+ChIAPET$V4afterDash <- sub(",.*$", "", ChIAPET$V4afterDash)
 
 # Split up the V4beforeDasha and V4afterDash columns by the ".." character
 ChIAPET <- ChIAPET %>%
@@ -60,10 +67,12 @@ ChIAPET <- ChIAPET %>%
     rightEnd = str_split(V4afterDash, "\\.\\.", simplify = TRUE)[, 2]
   )
 
+# Keep relevant rows
 ChIAPETLeft <- ChIAPET[, c("V1", "leftStart", "leftEnd", "uniqueNames")]
-
 ChIAPETRight <- ChIAPET[, c("V1", "rightStart", "rightEnd", "uniqueNames")]
 
+# Export left hand ChIA-PET anchors .bed file
 write.table(ChIAPETLeft, lefthandfilepath, quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")
 
+# Export right hand ChIA-PET anchors .bed file
 write.table(ChIAPETRight, righthandfilepath, quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")

@@ -1,24 +1,22 @@
-# The script finds the datasets in the Human.sample_name2library_id file
+# The script finds the datasets in the FANTOM5 sample library file
 # based on K562 cells and returns a dataset containing their annotations and
 # filenames. 
-
-# Creates a BED file of cell lines of interest from 
 
 # Load required libraries
 library(dplyr)
 library(tidyr)
 library(stringr) 
 
-# Select experiment phrase of interest
+# Assign filepaths
 count_matrix_path = "~/Documents/Vihervaara/hg19/cage-seq/human_permissive_enhancers_phase_1_and_2_expression_count_matrix.txt"
 sample_library_path = "~/Documents/Vihervaara/hg19/cage-seq/Human.sample_name2library_id.txt"
 bed_filename = "~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562.bed"
 RPK_matrix_out_path = "~/Documents/Vihervaara/hg19/cage-seq/CAGE_K562_RPK_matrix.txt"
 
-# Fetch data set id data
+# Import sample library
 sample_library <- read.delim(sample_library_path, header=FALSE)
 
-# Return data sets of interest, those containing the phrase "K526"
+# Keep datasets containing the phrase "K526"
 filtered_sample_library <- sample_library %>% filter(grepl("K562", V1))
 
 # Extract biological replicate information
@@ -81,9 +79,10 @@ CAGE_RPK <- CAGE_RPK[, -c(4:25)]
 # Remove rows with only RPK 0s
 CAGE_RPK <- CAGE_RPK[!(CAGE_RPK$min_0_mean_RPK == 0 & CAGE_RPK$min_15_mean_RPK == 0 & CAGE_RPK$min_30_mean_RPK == 0 & CAGE_RPK$min_60_mean_RPK == 0 & CAGE_RPK$hr_24_mean_RPK == 0 & CAGE_RPK$hr_48_mean_RPK == 0), ]
 
-# Export final matrix
+# Export final matrix as .bed file
 write.table(CAGE_RPK, RPK_matrix_out_path, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = ",")
 
+# Export per timepoint matrices as .bed files
 write.table(CAGE_RPK %>% select(chr, eStart, eEnd, min_0_mean_RPK) %>% filter(min_0_mean_RPK != 0), "~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_0min.bed", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")
 write.table(CAGE_RPK %>% select(chr, eStart, eEnd, min_15_mean_RPK) %>% filter(min_15_mean_RPK != 0), "~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_15min.bed", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")
 write.table(CAGE_RPK %>% select(chr, eStart, eEnd, min_30_mean_RPK) %>% filter(min_30_mean_RPK != 0), "~/Documents/Vihervaara/hg19/cage-seq/FANTOM5_K562_30min.bed", quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")

@@ -1,5 +1,5 @@
 ## REX-motif finding script
-# This script returns a BED file of each REX motif found in a given FASTA file. 
+# This script returns a .bed file of each REX motif found in a given .fasta file. 
 
 # Download hg19 chromosome FASTA files from this link: 
 # https://hgdownload.soe.ucsc.edu/goldenPath/hg19/chromosomes/
@@ -13,6 +13,7 @@ args <- commandArgs(trailingOnly = TRUE)
 # Avoid scientific notation globally
 options(scipen = 999)
 
+# Check number of arguments
 if (length(args) < 2) {
   stop("Usage: Rscript script.R <fasta1.fa> <fasta2.fa> ... <output.bed>")
 }
@@ -21,10 +22,10 @@ if (length(args) < 2) {
 bed_filename <- args[length(args)]
 fasta_files <- args[-length(args)]
 
-# REX motifs (already in lowercase)
+# REX motifs
 motifs <- c("taatta", "caatta", "taattg")
 
-# Function to find motif positions in one FASTA
+# Function to find motif positions in one .fasta file
 find_REX <- function(fasta, motifs) {
   fasta_lines <- readLines(fasta, warn = FALSE)
   chr <- sub("^>(\\S+).*", "\\1", fasta_lines[1])
@@ -49,15 +50,14 @@ find_REX <- function(fasta, motifs) {
   )
 }
 
-# Apply to all FASTA files and combine results
+# Apply to all .fasta files and combine results
 rex_list <- lapply(fasta_files, find_REX, motifs = motifs)
 all_rex_df <- do.call(rbind, rex_list)
 
 # Report total number of motifs
 cat(sprintf("\nTotal REX motifs found: %d\n", nrow(all_rex_df)))
 
-# Write BED file
-write.table(all_rex_df, bed_filename, 
-            quote = FALSE, row.names = FALSE,
+# Write .bed file
+write.table(all_rex_df, bed_filename, quote = FALSE, row.names = FALSE, 
             col.names = FALSE, sep = "\t")
 
